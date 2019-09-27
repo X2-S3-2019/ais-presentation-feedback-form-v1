@@ -8,7 +8,7 @@ var start = {
 	initSetFolder: function() {
 		var that = this;
 		async function run() {
-            const res = await eel.setFolder()();
+            const res = await eel.setFolder();
             if ( res ) {
             	that.startBtn.removeClass("disabled");
             }

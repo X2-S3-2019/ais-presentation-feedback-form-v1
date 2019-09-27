@@ -34,10 +34,9 @@ template = "Template.docx"
 
 file_path = "~/Downloads/"
 
-
-
 @eel.expose
 def setFolder():
+	global file_path
 	application_window = tk.Tk()
 	try:
 		application_window.withdraw()
@@ -154,13 +153,15 @@ def generdate_word(options, header):
 		organization_3 = names['organization_3'],
 		organization_4 = names['organization_4']
 	);
-	document.write('result' + topzone['sname'] + '(' + topzone['sid'] + ')- ' + '{:%d-%b-%Y}'.format(date.today()) + '.docx')
+	filename = file_path + "/" + 'result-' + topzone['sname'] + '(' + topzone['sid'] + ')- ' + '{:%d-%b-%Y}'.format(date.today()) + '.docx'
+	print(filename)
+	document.write(filename)
 
-	print(document.get_merge_fields())
-	print(options)
-	print(header)
-	print(data)
-	print(topzone)
+	# print(document.get_merge_fields())
+	# print(options)
+	# print(header)
+	# print(data)
+	# print(topzone)
 
 @eel.expose
 def say_hello_py(x):
