@@ -1,0 +1,1 @@
+pyinstaller accessment.py --onefile --noconsole --hidden-import bottle_websocket --add-data /usr/local/lib/python2.7/site-packages/eel/eel.js:eel --add-data web:web 

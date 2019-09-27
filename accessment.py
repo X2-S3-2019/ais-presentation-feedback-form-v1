@@ -2,7 +2,7 @@
 
 
 from __future__ import print_function	# For Py2/3 compatibility
-import eel, json
+import eel, json, os
 from mailmerge import MailMerge
 from datetime import date
 import tkinter as tk
@@ -35,11 +35,23 @@ template = "Template.docx"
 file_path = "~/Downloads/"
 
 
+
 @eel.expose
 def setFolder():
-	root = tk.Tk()
-	root.withdraw()
-	file_path = filedialog.askopenfilename()
+	application_window = tk.Tk()
+	try:
+		application_window.withdraw()
+		application_window.update()
+		file_path = filedialog.askdirectory(
+						parent=application_window,
+						initialdir=os.getcwd(),
+						title="Please select a folder:")
+		application_window.quit()
+		print(file_path)
+	except Exception as e:
+		print(e)
+		return False
+	return True
 
 
 @eel.expose
@@ -150,4 +162,14 @@ def generdate_word(options, header):
 	print(data)
 	print(topzone)
 
-eel.start('main.html', block=False, size=(1000, 600))
+@eel.expose
+def say_hello_py(x):
+    print('Hello from %s' % x)
+
+say_hello_py('Python World!');
+eel.say_hello_js('Python World!')
+eel.start('main.html', size=(1000, 600), disable_cache=True)
+
+
+
+
