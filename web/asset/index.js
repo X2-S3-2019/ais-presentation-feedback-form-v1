@@ -173,6 +173,18 @@ say_hello_js("Javascript World!");
 eel.say_hello_py("Javascript World!");  // Call a Python function
 
 
+function reload(confirm_msg) {
+    var isconfirm = confirm(confirm_msg);
+    if (isconfirm) {
+        window.location.reload();
+    }
+}
+eel.expose(reload);
+
+function AisAlert(confirm_msg) {
+    alert(confirm_msg);
+}
+eel.expose(AisAlert);
 
 
 

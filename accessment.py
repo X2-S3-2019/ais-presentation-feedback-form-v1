@@ -40,6 +40,7 @@ def setFolder():
 	application_window = tk.Tk()
 	try:
 		application_window.withdraw()
+		application_window.wm_attributes('-topmost',1)
 		application_window.update()
 		file_path = filedialog.askdirectory(
 						parent=application_window,
@@ -155,7 +156,11 @@ def generdate_word(options, header):
 	);
 	filename = file_path + "/" + 'result-' + topzone['sname'] + '(' + topzone['sid'] + ')- ' + '{:%d-%b-%Y}'.format(date.today()) + '.docx'
 	print(filename)
-	document.write(filename)
+	try:
+		document.write(filename)
+	except Exception as e:
+		eel.AisAlert("error occures!" + e)
+	eel.reload("resul stores in " + filename + " successfully! prepare for the next student?")
 
 	# print(document.get_merge_fields())
 	# print(options)
