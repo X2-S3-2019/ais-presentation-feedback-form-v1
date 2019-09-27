@@ -14,9 +14,7 @@ Version 1 of Feedback Form for presentations of AIS students. This project was d
 
 
 ###### for developer : python accessment.py 
-###### for package:
-1. windows: pyinstaller .\accessment.py --onefile --noconsole --hidden-import bottle_websocket --add-data C:\Users\Admin\scoop\apps\python27\current\lib\site-packages\eel\eel.js;eel --add-data .\web\;.\web\
-2. mac/unix: pyinstaller accessment.py --onefile --noconsole --hidden-import bottle_websocket --add-data /usr/local/lib/python2.7/site-packages/eel/eel.js:eel --add-data web:web 
+###### for package: python -m eel accessment.py web
 
 
 
