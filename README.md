@@ -14,7 +14,7 @@ Version 1 of Feedback Form for presentations of AIS students. This project was d
 
 
 ###### for developer : python accessment.py 
-###### for package: python -m --noconsole --onefile eel accessment.py web
+###### for package: python -m eel accessment.py web
 
 
 
