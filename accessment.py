@@ -2,16 +2,21 @@
 
 
 from __future__ import print_function	# For Py2/3 compatibility
-import eel, json, os
+import eel, json, os, datastore
 from mailmerge import MailMerge
 from datetime import date
 import tkinter as tk
 from tkinter import filedialog
 
-eel.init('web')
-
-
 template = "Template.docx"
+db_name = "ais.db"
+file_path = "~/Downloads/"
+
+eel.init('web')
+datastore.initDb(db_name);
+
+
+
 
 #set([
 # 'ideas_3', 'ideas_1', 'ideas_4', 'ideas_2',
@@ -32,7 +37,26 @@ template = "Template.docx"
 #"lang":{"eye_contact":"2","enthusiasm":"3","elocution":"4"},
 #"technical":{"knowledge":"3","research":"2","ideas":"1","argument":"2","questions":"3"}}
 
-file_path = "~/Downloads/"
+#def initDb():
+#    try:
+#        conn = sqlite3.connect(db_name)
+#    except Error:
+ 
+#        print(Error)
+ 
+#    finally:
+ 
+#        con.close()
+#    return True
+
+@eel.expose
+def createCourse(course_name, course_id):
+    datastore.createCourse(course_name, course_id)
+    return True
+
+@eel.expose
+def getCourses():
+    return datastore.getCourses()
 
 @eel.expose
 def setFolder():
@@ -52,8 +76,6 @@ def setFolder():
 		print(e)
 		return False
 	return True
-
-
 @eel.expose
 def generdate_word(options, header):
 	data = json.loads(options)
@@ -64,7 +86,6 @@ def generdate_word(options, header):
 	names = {}
 
 	content_total = 0
-
 	print(data)
 
 	for tmp in data["content"]:
@@ -168,12 +189,12 @@ def generdate_word(options, header):
 	# print(data)
 	# print(topzone)
 
-@eel.expose
-def say_hello_py(x):
-    print('Hello from %s' % x)
+#@eel.expose
+#def say_hello_py(x):
+#    print('Hello from %s' % x)
 
-say_hello_py('Python World!');
-eel.say_hello_js('Python World!')
+#    say_hello_py('Python World!');
+#    eel.say_hello_js('Python World!')
 eel.start('main.html', size=(1000, 600), disable_cache=True)
 
 

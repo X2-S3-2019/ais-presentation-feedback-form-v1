@@ -1,4 +1,4 @@
-var start = {
+var mainpage = {
 	startBtn: $("#start"),
 	setfolderBtn: $("#setfolder"),
 	init: function() {

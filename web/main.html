@@ -1,33 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html class="h-100">
     <head>
-        <title>AIS Electric Assess Software</title>
-        <link rel="stylesheet" href="./asset/index.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <title>AIS Electronic Assessment Software</title>
+        <link rel="stylesheet" href="asset/index.css">
+        <link rel="stylesheet" href="asset/css/lib/bootstrap4_3_1.min.css">
+        <script src="asset/js/lib/jquery-3.4.1.min.js"></script>
+        <script src="asset/js/lib/popper.min.js" "></script>
+        <script src="asset/js/lib/bootstrap.min.js"></script>
         <script type="text/javascript" src="/eel.js"></script>
         <script type="text/javascript">
         </script>
     </head>
     <body>
         <div class="index">
-            <div class="cover"></div>
-            <div class="menu">
+            <div class="menu d-flex">
                 <div class="logo">
                     <img src="./asset/logo.jpeg">
                 </div>
                 <div class="title">
-                    <h1>Assessment Software</h1>
+                    <h1 class="mt-4">Student Assessment Software</h1>
                 </div>
-                <div class="buttons col-12">
-                    <button type="button" class="btn btn-success disabled" id="start">Start</button>
-                    <br />
-                    <button type="button" class="btn btn-warning" id="setfolder">Set Folder</button>
+                <div class="buttons row">
+                    <div class="col-2 d-flex">
+                    </div>
+                    <div class="col-4 d-flex">
+                        <button type="button" class="btn btn-success" id="start">Start</button>
+                    </div>
+
+                    <div class="col-4 d-flex">
+                        <button type="button" class="btn btn-warning" id="settings">Settings</button>
+                    </div>
+                    <div class="col-2 d-flex">
+                    </div>
                 </div>
-            </div>
         </div>
     </body>
-    <script src="./asset/index.js?v=1.10"></script>
+    <script src="./asset/js/mainpage.js?v=1.10"></script>
 </html>
