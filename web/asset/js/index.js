@@ -83,7 +83,7 @@ var assess = {
 	student_id: $("#student_id"),
 	topic: $("#topic"),
 	saveBtn: $("#save"),
-	generateBtn: $("#generate"),
+	// generateBtn: $("#generate"),
 	init: function() {
 		this.initialSelect();
 		this.initalHeader();
@@ -176,12 +176,12 @@ var assess = {
 					$('body, html').animate({
 						scrollTop: tmp.offset().top
 					});
-					that.generateBtn.addClass("disabled");
+					// that.generateBtn.addClass("disabled");
 					return false;
 				}
 			}
 		}
-		that.generateBtn.removeClass("disabled");
+		// that.generateBtn.removeClass("disabled");
 		return true;
 	},
 }
