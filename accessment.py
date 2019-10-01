@@ -7,6 +7,7 @@ from mailmerge import MailMerge
 from datetime import date
 import tkinter as tk
 from tkinter import filedialog
+import names
 
 template = "Template.docx"
 db_name = "ais.db"
@@ -57,6 +58,15 @@ def createCourse(course_name, course_id):
 @eel.expose
 def getCourses():
     return datastore.getCourses()
+
+@eel.expose
+def createPresentation(course_id, presentation_date, presentation_name):
+    datastore.createPresentation(course_id, presentation_date, presentation_name)
+    return True
+
+@eel.expose
+def getPresentations(course_id):
+    return datastore.getPresentations(course_id)
 
 @eel.expose
 def setFolder():
@@ -195,6 +205,9 @@ def generdate_word(options, header):
 
 #    say_hello_py('Python World!');
 #    eel.say_hello_js('Python World!')
+#print(names.getRandomName() + ' ' + names.getRandomSurName())
+
+print(datastore.getPresentations('wd40'))
 eel.start('main.html', size=(1000, 600), disable_cache=True)
 
 

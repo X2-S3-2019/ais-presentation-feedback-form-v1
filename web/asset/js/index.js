@@ -1,9 +1,10 @@
 var mainpage = {
 	startBtn: $("#start"),
 	setfolderBtn: $("#setfolder"),
-	init: function() {
+
+    init: function () {
 		this.initSetFolder();
-		this.initStartBtn();
+        this.initStartBtn();
 	},
 	initSetFolder: function() {
 		var that = this;
@@ -25,7 +26,31 @@ var mainpage = {
 			}
 			window.location.href = "/accessment.html"
 		});
-	},
+    },
+    getCourses: function () {
+        courses = eel.getCourses()(function (courses) {
+            console.log(courses);
+            courses.forEach(function (row) {
+                $('#courses-assess').append(
+                    '<option value=' + row[1] + '>' +
+                    row[2] +
+                    '</option>'
+                )
+            })
+        });
+    },
+    getPresentations: function () {
+        let course_id = $('#courses-assess').val();
+        presentations = eel.getPresentations(course_id)(function (presentations) {
+            presentations.forEach(function (row) {
+                $('#presentations-assess').append(
+                    '<option value=' + row[0] + '>' +
+                    rowp[1] + ' ' + row[2] + 
+                    '</option>'
+                )
+            })
+        });
+    }
 };
 
 var assess = {
@@ -62,7 +87,9 @@ var assess = {
 	init: function() {
 		this.initialSelect();
 		this.initalHeader();
-		this.initialSave();
+        this.initialSave();
+        mainpage.getCourses();
+        mainpage.getPresentations();
 	},
 	initialSelect: function() {
 		var that = this;
@@ -161,7 +188,7 @@ var assess = {
 
 $(document).ready(function(){
 	assess.init();
-	start.init();
+    //start.init();
 });
 
 
@@ -170,7 +197,7 @@ function say_hello_js(x) {
     console.log("Hello from " + x);
 }
 say_hello_js("Javascript World!");
-eel.say_hello_py("Javascript World!");  // Call a Python function
+//eel.say_hello_py("Javascript World!");  // Call a Python function
 
 
 function reload(confirm_msg) {
