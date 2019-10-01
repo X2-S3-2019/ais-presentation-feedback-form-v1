@@ -1,9 +1,11 @@
 var start = {
 	startBtn: $("#start"),
 	settingsBtn: $("#settings"),
+    skipIntroBtn: $("#skip_intro"),
     init: function () {
         this.initSettingsBtn();
-		this.initStartBtn();
+        this.initStartBtn();
+        this.initSkipIntroBtn();
 	},
 	
 	initStartBtn: function() {
@@ -14,6 +16,12 @@ var start = {
 			}
 			window.location.href = "/accessment.html"
 		});
+    },
+    initSkipIntroBtn: function () {
+        var that = this;
+        this.skipIntroBtn.on('click', function () {
+            window.location.href = "main.html"
+        });
     },
     initSettingsBtn: function () {
         var that = this;

@@ -1,7 +1,7 @@
 var mainpage = {
 	startBtn: $("#start"),
 	setfolderBtn: $("#setfolder"),
-
+    timerInterval:0,
     init: function () {
 		this.initSetFolder();
         this.initStartBtn();
@@ -27,9 +27,54 @@ var mainpage = {
 			window.location.href = "/accessment.html"
 		});
     },
+    initCourses: function () {
+        mainpage.getCourses();
+        $(document).on('change', '#courses-assess', function () {
+            mainpage.getPresentations();
+        })
+        setTimeout(function () { mainpage.getPresentations() }, 1000);
+
+        $(document).on('click', '#get-student-name', function () {
+            if ($('#get-student-name').hasClass('disabled') || $('#student_name').val().length > 0) {
+                return false;
+            }
+        
+            courses = eel.getRandomStudentFullName()(function (name) {
+                $('#student_name').val(name.trim());
+            });
+        });
+        $(document).on('input', '#student_id', function () {
+            mainpage.getPresentations();
+            $('#student_name').val('')
+            if ($('#student_id').val().length > 0) {
+                $('#get-student-name').removeClass('disabled');
+            } else {
+                $('#get-student-name').addClass('disabled');
+            }
+        })
+        $(document).on('click', '#start_timer', function () {
+            if ($(this).hasClass('bg-success')) {
+                $(this).text('Stop Presentation Timer');
+                $(this).removeClass('bg-success').addClass('bg-danger')
+                $('#presentation_timer').removeClass('collapse')
+                let elapsed_seconds = 0;
+                this.timerInterval = setInterval(function () {
+                    elapsed_seconds += 1;
+                    $('#presentation_timer_container').text(get_elapsed_time_string((elapsed_seconds)));
+                }, 1000);
+            } else {
+                $(this).text('Start Presentation Timer');
+                $(this).removeClass('bg-danger').addClass('bg-success')
+               
+                clearInterval(this.timerInterval);
+            }
+            
+            
+        });
+        
+    },
     getCourses: function () {
-        courses = eel.getCourses()(function (courses) {
-            console.log(courses);
+        courses = eel.getCourses()(function (courses) {  
             courses.forEach(function (row) {
                 $('#courses-assess').append(
                     '<option value=' + row[1] + '>' +
@@ -42,14 +87,17 @@ var mainpage = {
     getPresentations: function () {
         let course_id = $('#courses-assess').val();
         presentations = eel.getPresentations(course_id)(function (presentations) {
+            $('#presentations-assess').empty();
             presentations.forEach(function (row) {
                 $('#presentations-assess').append(
                     '<option value=' + row[0] + '>' +
-                    rowp[1] + ' ' + row[2] + 
+                    row[1] + ' ' + row[2] +
                     '</option>'
                 )
             })
         });
+    },
+    getStudentName() {
     }
 };
 
@@ -81,15 +129,14 @@ var assess = {
 	},
 	student_name: $("#student_name"),
 	student_id: $("#student_id"),
-	topic: $("#topic"),
+    topic: $("#presentations-assess"),
 	saveBtn: $("#save"),
 	generateBtn: $("#generate"),
 	init: function() {
 		this.initialSelect();
 		this.initalHeader();
         this.initialSave();
-        mainpage.getCourses();
-        mainpage.getPresentations();
+        mainpage.initCourses();
 	},
 	initialSelect: function() {
 		var that = this;
@@ -133,18 +180,30 @@ var assess = {
 		this.saveBtn.click(function() {
 			if ( that.checkHeader() ) {
 				var ret = that.checkOption();
-				if ( ret ) {
+                if (ret) {
+                    console.log(JSON.stringify(that.data));
+                    console.log(JSON.stringify(that.header));
 					eel.generdate_word(JSON.stringify(that.data), JSON.stringify(that.header));
 				}
 			}
 		});
 	},
-	checkHeader: function() {
+    checkHeader: function () {
+
+        if ($('#courses-assess').val() == "") {
+            this.$('#courses-assess').addClass("is-invalid");
+            return false;
+        }
+        if ($('#presentations-assess').val() == "") {
+            this.$('#presentations-assess').addClass("is-invalid");
+            return false;
+        }
+
 		if ( this.student_name.val() == "" ) {
 			this.student_name.addClass("is-invalid");
-			this.student_name.focus();
 			return false;
-		} else {
+        }
+        else {
 			this.student_name.removeClass("is-invalid");
 			this.header.sname = this.student_name.val();
 		}
@@ -211,6 +270,31 @@ eel.expose(reload);
 function AisAlert(confirm_msg) {
     alert(confirm_msg);
 }
+
+function get_elapsed_time_string(total_seconds) {
+    function pretty_time_string(num) {
+        return (num < 10 ? "0" : "") + num;
+    }
+
+    var hours = Math.floor(total_seconds / 3600);
+    total_seconds = total_seconds % 3600;
+
+    var minutes = Math.floor(total_seconds / 60);
+    total_seconds = total_seconds % 60;
+
+    var seconds = Math.floor(total_seconds);
+
+    // Pad the minutes and seconds with leading zeros, if required
+    hours = pretty_time_string(hours);
+    minutes = pretty_time_string(minutes);
+    seconds = pretty_time_string(seconds);
+
+    // Compose the string for display
+    var currentTimeString = hours + ":" + minutes + ":" + seconds;
+
+    return currentTimeString;
+}
+
 eel.expose(AisAlert);
 
 

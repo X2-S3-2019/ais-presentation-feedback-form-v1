@@ -72,11 +72,24 @@ body {
     background-color: #ffc107!important;
 }
 
+.btn-green {
+    background-color: #ffc107 !important;
+}
 .redtr {
     border-color: red;
 }
 
-
+#intro-carusel {
+    background-color:#fefbd7;
+    height:200px;
+}
+.carousel-inner {
+    padding: 20px 80px 20px 80px;
+}
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    color:red;
+    background-color:black!important;
+}
 
 
 

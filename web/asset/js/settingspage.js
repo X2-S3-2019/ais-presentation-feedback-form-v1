@@ -4,11 +4,15 @@ var settings = {
     studentsTab: $("#students-tab"),
     courseStudentsTab: $("#course-students-tab"),
     container: $("#content"),
-
+    setfolderBtn: $("#set_path"),
+    startBtn: $('#to_assessment'),
     init: function ()
     {
         this.initLoadCourses();
         this.initAddCourseBtn();
+        this.initSetFolder();
+        this.initStartBtn();
+
     },
 
     initLoadCourses() {
@@ -136,27 +140,27 @@ var settings = {
     },
   
 
-	//initSetFolder: function() {
-	//	var that = this;
-	//	async function run() {
- //           const res = await eel.setFolder();
- //           if ( res ) {
- //           	that.startBtn.removeClass("disabled");
- //           }
- //       }
-	//	this.setfolderBtn.click(function() {
-	//		run();
-	//	});
-	//},
-	//initStartBtn: function() {
-	//	var that = this;
-	//	this.startBtn.click(function() {
-	//		if ( that.startBtn.hasClass("disabled") === true ) {
-	//			// return;
-	//		}
-	//		window.location.href = "/accessment.html"
-	//	});
- //   },
+	initSetFolder: function() {
+		var that = this;
+		async function run() {
+            const res = await eel.setFolder();
+            //if ( res ) {
+            //	that.startBtn.removeClass("disabled");
+            //}
+        }
+		this.setfolderBtn.click(function() {
+			run();
+		});
+	},
+	initStartBtn: function() {
+        var that = this;
+		this.startBtn.click(function() {
+			if ( that.startBtn.hasClass("disabled") === true ) {
+				// return;
+			}
+			window.location.href = "/accessment.html"
+		});
+    },
     initAddCourseBtn: function () {
         $(document).on('click', '#add-course', function () {
             settings.createCourse();
