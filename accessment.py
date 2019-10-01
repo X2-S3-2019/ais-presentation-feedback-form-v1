@@ -8,6 +8,10 @@ from datetime import date
 import tkinter as tk
 from tkinter import filedialog
 import names
+import smtplib, webbrowser
+from email.mime.text import MIMEText
+from email.header import Header
+
 
 template = "Template.docx"
 db_name = "ais.db"
@@ -17,6 +21,11 @@ eel.init('web')
 datastore.initDb(db_name);
 
 
+mail_host = 'smtp.gmail.com'  
+mail_user = 'wangdw2012'  
+mail_pass = 'XXXXXXX'
+sender = 'wangdw2012@gmail.com'  
+receivers = ['shasw2006@163.com', "443135260@qq.com"]  
 
 
 #set([
@@ -86,6 +95,7 @@ def setFolder():
 		print(e)
 		return False
 	return True
+
 @eel.expose
 def generdate_word(options, header):
 	data = json.loads(options)
@@ -128,9 +138,9 @@ def generdate_word(options, header):
 
 
 	document.merge(
-		SNAME = topzone['sname'],
+		# SNAME = topzone['sname'],
 		SID = topzone['sid'],
-		TOPIC = topzone['topic'],
+		# TOPIC = topzone['topic'],
 		date='{:%d-%b-%Y}'.format(date.today()),
 		technical_total = str(technical_total),
 		content_total = str(content_total),
@@ -185,19 +195,50 @@ def generdate_word(options, header):
 		organization_3 = names['organization_3'],
 		organization_4 = names['organization_4']
 	);
-	filename = file_path + "/" + 'result-' + topzone['sname'] + '(' + topzone['sid'] + ')- ' + '{:%d-%b-%Y}'.format(date.today()) + '.docx'
-	print(filename)
+	# filename = file_path + "/" + 'result-' + topzone['sname'] + '(' + topzone['sid'] + ')- ' + '{:%d-%b-%Y}'.format(date.today()) + '.docx'
+	filename = ""
+	# print(filename)
+
 	try:
-		document.write(filename)
+		# document.write(filename)
+		pass
 	except Exception as e:
-		eel.AisAlert("error occures!" + e)
-	eel.reload("resul stores in " + filename + " successfully! prepare for the next student?")
+		# eel.AisAlert("error occures!" + e)
+		pass
+	eel.showSurvey()
+	eel.AisAlert("resul stores in " + filename + " successfully!")
 
 	# print(document.get_merge_fields())
 	# print(options)
 	# print(header)
 	# print(data)
 	# print(topzone)
+
+@eel.expose
+def sendRating(rating):
+	message = MIMEText('We have a new rating!! The rating is ' + str(rating), 'plain', 'utf-8')
+	message['From'] = Header(sender, 'utf-8')
+	message['To'] =  Header(", ".join(receivers), 'utf-8')
+	subject = 'AIS evaluation desk top apprating result!!'
+	message['Subject'] = Header(subject, 'utf-8')
+	try:
+		smtpObj = smtplib.SMTP() 
+		smtpObj.connect(mail_host)
+		smtpObj.ehlo()
+		smtpObj.starttls()
+		smtpObj.login(mail_user,mail_pass) 
+		smtpObj.sendmail(sender,receivers, message.as_string())
+		smtpObj.quit() 
+	except smtplib.SMTPException as e:
+		print('error',e) 
+	return True
+
+@eel.expose
+def openURL():
+	url = "https://sites.google.com/view/evaluate-app"
+	webbrowser.open(url);
+
+
 
 #@eel.expose
 #def say_hello_py(x):

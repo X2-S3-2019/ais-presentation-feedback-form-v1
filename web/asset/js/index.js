@@ -83,11 +83,14 @@ var assess = {
 	student_id: $("#student_id"),
 	topic: $("#topic"),
 	saveBtn: $("#save"),
+	resetBtn: $("#reset"),
+
 	// generateBtn: $("#generate"),
 	init: function() {
 		this.initialSelect();
 		this.initalHeader();
         this.initialSave();
+        this.initialReset();
         mainpage.getCourses();
         mainpage.getPresentations();
 	},
@@ -139,6 +142,14 @@ var assess = {
 			}
 		});
 	},
+	initialReset: function() {
+		this.resetBtn.click(function() {
+			var isconfirm = confirm("Are you sure to reset this page?");
+			if ( isconfirm ) {
+				window.location.reload();
+			}
+		});
+	},
 	checkHeader: function() {
 		if ( this.student_name.val() == "" ) {
 			this.student_name.addClass("is-invalid");
@@ -187,10 +198,29 @@ var assess = {
 }
 
 $(document).ready(function(){
+	var rating = 5;
 	assess.init();
     //start.init();
+	$("#rateYo").rateYo({
+		rating: rating,
+    	fullStar: true
+	}).on('rateyo.change', function (e, data) {
+    }).on('rateyo.set', function(e, data) {
+		rating = data.rating;
+    });
+    $("#rating_submit").click(function(){
+    	var ret = eel.sendRating(rating);
+    	if ( ret ) {
+    		var msg = "Submit Successfully!"
+			if ( $("#govisit").attr("checked") ) {
+    			eel.openURL();
+    		}
+    		alert(msg);
+    		$("#surveyModel").modal("hide");
+    	}
+    	Cookies.set("survey", true);
+    });
 });
-
 
 eel.expose(say_hello_js);               // Expose this function to Python
 function say_hello_js(x) {
@@ -199,14 +229,13 @@ function say_hello_js(x) {
 say_hello_js("Javascript World!");
 //eel.say_hello_py("Javascript World!");  // Call a Python function
 
-
-function reload(confirm_msg) {
-    var isconfirm = confirm(confirm_msg);
-    if (isconfirm) {
-        window.location.reload();
-    }
+function showSurvey() {
+	var hasSurvey = Cookies.get("survey");
+	if ( !hasSurvey ) {
+		$("#surveyModel").modal('show');
+	}
 }
-eel.expose(reload);
+eel.expose(showSurvey);
 
 function AisAlert(confirm_msg) {
     alert(confirm_msg);

@@ -3,10 +3,13 @@
     <head>
         <title>AIS Electric Assess Software</title>
         <link rel="stylesheet" href="./asset/index.css">
-        <link rel="stylesheet" href="./asset/css/lib/bootstrap4_3_1.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script src="./asset/js/lib/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="crossorigin="anonymous"></script>
-        <script src="./asset/js/lib/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="./asset/js/lib/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="./asset/css/lib/bootstrap4_3_1.min.css">
+        <link rel="stylesheet" href="./asset/css/lib/jquery.rateyo.min.css">
+        <script src="./asset/js/lib/jquery-3.4.1.min.js"></script>
+        <script src="./asset/js/lib/popper.min.js"></script>
+        <script src="./asset/js/lib/bootstrap.min.js"></script>
+        <script src="./asset/js/lib/jquery.rateyo.min.js"></script>
+        <script src="./asset/js/lib/js.cookie.min.js"></script>
         <script type="text/javascript" src="/eel.js"></script>
         <script type="text/javascript">
         </script>
@@ -270,16 +273,50 @@
 
                 <div class="row">
                     <div class="col-4"></div>
-                    <div class="col-6">
+                    <div class="col-4">
 <!--                         <button type="button" style="width: 100%" class="btn btn-success" id="save" >Save</button>
- -->                    </div>
+ -->                </div>
                     <div class="col-2">
-                        <!-- <button type="button" style="width: 100%" class="btn btn-primary disabled" id="generate">Generate</button> -->
+                        <button type="button" style="width: 100%" class="btn btn-light" id="reset">Reset</button>
+                    </div>
+                    <div class="col-2">
                         <button type="button" style="width: 100%" class="btn btn-success" id="save" >Save</button>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="modal" tabindex="-1" role="dialog" id="surveyModel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Please help us to improve.</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                    <div class="col-3">Satisfaction: </div> 
+                    <div class="col-4" id="rateYo"></div>
+                    <div class="col-2"></div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-8">
+                        <input type="checkbox" name="visit" checked id="govisit">
+                        &nbsp;&nbsp;&nbsp;
+                        Go and visit our websites.
+                    </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="rating_submit">Submit</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
     </body>
-    <script src="./asset/js/index.js?v=1.10"></script>
+    <script src="./asset/js/index.js?v=1.11"></script>
 </html>
