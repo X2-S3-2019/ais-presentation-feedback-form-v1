@@ -4,3 +4,5 @@ build/
 *.spec
 *.sublime-project
 *.sublime-workspace
+*.pyc
+*.db
