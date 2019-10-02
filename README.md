@@ -14,7 +14,9 @@ Version 1 of Feedback Form for presentations of AIS students. This project was d
 
 
 ###### for developer : python accessment.py 
-###### for package: python -m eel accessment.py web
+###### for package: 
+
+pyinstaller -y -F -w --add-data "C:/projects/ais-presentation-feedback-form-v1/Template.docx";"./Template.docx" --add-data "C:/Users/Admin/scoop/apps/python27/current/Lib/site-packages/eel/eel.js";"eel" --add-data "C:/projects/ais-presentation-feedback-form-v1/web";"web/" --hidden-import bottle_websocket  "C:/projects/ais-presentation-feedback-form-v1/accessment.py"
 
 
 
