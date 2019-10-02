@@ -269,7 +269,7 @@ $(document).ready(function(){
     	var ret = eel.sendRating(rating);
     	if ( ret ) {
     		var msg = "Submit Successfully!"
-			if ( $("#govisit").attr("checked") ) {
+			if ( $("#govisit").prop("checked") ) {
     			eel.openURL();
     		}
     		alert(msg);

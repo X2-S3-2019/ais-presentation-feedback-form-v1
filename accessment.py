@@ -23,9 +23,9 @@ datastore.initDb(db_name);
 
 mail_host = 'smtp.gmail.com'  
 mail_user = 'wangdw2012'  
-mail_pass = 'XXXXXXX'
+mail_pass = '@Shaswsm15'
 sender = 'wangdw2012@gmail.com'  
-receivers = ['shasw2006@163.com', "443135260@qq.com"]  
+receivers = ['shasw2006@163.com',"cm2001218@gmail.com", "pang.chavez@gmail.com", "alba632@ess.ais.ac.nz"]
 
 
 #set([
@@ -225,10 +225,10 @@ def sendRating(rating):
 	subject = 'AIS evaluation desk top apprating result!!'
 	message['Subject'] = Header(subject, 'utf-8')
 	try:
-		smtpObj = smtplib.SMTP() 
-		smtpObj.connect(mail_host)
-		smtpObj.ehlo()
-		smtpObj.starttls()
+		smtpObj = smtplib.SMTP_SSL(mail_host, 465) 
+		# smtpObj.connect(mail_host)
+		# smtpObj.ehlo()
+		# smtpObj.starttls()
 		smtpObj.login(mail_user,mail_pass) 
 		smtpObj.sendmail(sender,receivers, message.as_string())
 		smtpObj.quit() 
