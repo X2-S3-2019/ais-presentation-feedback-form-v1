@@ -142,9 +142,9 @@ def generdate_word(options, header):
 
 
 	document.merge(
-		# SNAME = topzone['sname'],
+		SNAME = topzone['sname'],
 		SID = topzone['sid'],
-		# TOPIC = topzone['topic'],
+		TOPIC = topzone['topic'],
 		date='{:%d-%b-%Y}'.format(date.today()),
 		technical_total = str(technical_total),
 		content_total = str(content_total),
@@ -203,10 +203,10 @@ def generdate_word(options, header):
 	print(filename)
 
 	try:
-		# document.write(filename)
+		document.write(filename)
 		pass
 	except Exception as e:
-		# eel.AisAlert("error occures!" + e)
+		eel.AisAlert("error occures!" + e)
 		pass
 	eel.showSurvey()
 	eel.AisAlert("resul stores in " + filename + " successfully!")
