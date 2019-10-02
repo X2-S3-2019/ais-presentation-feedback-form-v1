@@ -15,6 +15,9 @@
         </script>
     </head>
     <body>
+        <nav class="navbar sticky-top navbar-light bg-danger collapse position-fixed p-4" id="presentation_timer">
+            <h5>Presentation time: &nbsp; </h5><h5 id="presentation_timer_container"></h5>
+        </nav>
         <div class="system">
             <div class="header">
                 <div class="logo">
@@ -25,250 +28,253 @@
             <div class="body" style="margin-left: 10px; margin-right: 20px;">
                 <div class="row" style="margin-top: 20px">
 
-                    <div class="col-12">
+                    <div class="col-6">
                         <label for="courses-assess">Course</label>
                         <select id="courses-assess" class="form-control"></select>
                     </div>
 
-                    <div class="col-12 ">
+                    <div class="col-6">
                         <label for="presentations-assess">Presentation</label>
                         <select id="presentations-assess" class="form-control"></select>
                     </div>
-
-                    <!--<div class="col">
-                        <input type="text" class="form-control" placeholder="Student Name" id="student_name" />
-                    </div>-->
-                    <div class="col mt-4">
+                </div>
+                <div class="row">
+                    <div class="col-2 mt-4">
                         <input type="text" class="form-control" placeholder="Student ID" id="student_id" />
+                    </div>
+                    <div class="col-3 col-xl-2">
+                        <button class="btn mt-4 btn-yellow disabled" id="get-student-name">Get student full name</button>
+                    </div>
+                    <div class="col-7 mt-4 col-xl-8">
+                        <input type="text" class="form-control" readonly placeholder="Student Full Name" id="student_name" />
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col">
+                        <button class="btn mt-4 mb-2 bg-success" id="start_timer">Start Presentation Timer</button>
                     </div>
                 </div>
 
-                <!--<div class="row" style="margin-top: 20px">
-                    <div class="col">
-                      <input type="text" class="form-control" placeholder="Topic of Presentation" id="topic" />
-                    </div>
-                </div>-->
-
                 <table class="table table-bordered" style="margin-top: 30px; text-align: center;">
-                  <thead>
-                    <tr>
-                      <th scope="col" width="12%">Content structure/ideas</th>
-                      <th scope="col" width="22%">4 – Excellent</th>
-                      <th scope="col" width="22%">3 – Good</th>
-                      <th scope="col" width="22%">2 – Fair</th>
-                      <th scope="col" width="22%">1 – Poor</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr data-type="content.focus">
-                        <th scope="row">Focus</th>
-                        <td data-score="4" data-type="content.focus" >
-                            Purpose of presentation is clear from the outset. Supporting ideas maintain clear focus on the topic.
-                        </td>
-                        <td data-score="3" data-type="content.focus" >
-                            Topic of the presentation is clear.Content generally supports the purpose.
-                        </td>
-                        <td data-score="2" data-type="content.focus">
-                            Presentation lacks clear direction. Big ideas not specifically identified.
-                        </td>
-                        <td data-score="1" data-type="content.focus">
-                            No focus at all. Audience cannot determine purpose of presentation.
-                        </td>
-                    </tr>
-                    <tr data-type="content.organization">
-                        <th scope="row">Organization</th>
-                        <td data-score="4" data-type="content.organization">
-                            Student presents information in logical, interesting sequence that audience follows.
-                        </td>
-                        <td data-score="3" data-type="content.organization">
-                            Student presents information in logical sequence that audience can follow.
-                        </td>
-                        <td data-score="2" data-type="content.organization">
-                            Audience has difficulty following because student jumps around.
-                        </td>
-                        <td data-score="1" data-type="content.organization">
-                            Audience cannot understand because there is no sequence of information.
-                        </td>
-                    </tr>
-                    <tr data-type="content.visual_adis">
-                        <th scope="row">Visual Aids</th>
-                        <td data-score="4" data-type="content.visual_aids">
-                            Visual aids are readable, clear and professional looking, enhancing the message.
-                        </td>
-                        <td data-score="3" data-type="content.visual_aids">
-                            Visual aids are mostly readable, clear and professional looking.
-                        </td>
-                        <td data-score="2" data-type="content.visual_aids">
-                            Significant problems with readability, clarity, professionalism of visual aids.
-                        </td>
-                        <td data-score="1" data-type="content.visual_aids">
-                            Visual aids are all unreadable, unclear and/or unprofessional.
-                        </td>
-                    </tr>
-                    <tr data-type="content.QA">
-                        <th scope="row">Question & Answer</th>
-                        <td data-score="4" data-type="content.QA">
-                            Speaker has prepared relevant questions for opening up the discussion and is able to stimulate discussion.
-                        </td>
-                        <td data-score="3" data-type="content.QA">
-                            Speaker has prepared relevant questions for opening up the discussion and is somewhat able to stimulate discussion.
-                        </td>
-                        <td data-score="2" data-type="content.QA">
-                            Speaker has prepared questions but is not really able to stimulate discussion.
-                        </td>
-                        <td data-score="1" data-type="content.QA">
-                            Speaker has not prepared questions.
-                        </td>
-                    </tr>
-                  </tbody>
+                    <thead>
+                        <tr>
+                            <th scope="col" width="12%">Content structure/ideas</th>
+                            <th scope="col" width="22%">4 – Excellent</th>
+                            <th scope="col" width="22%">3 – Good</th>
+                            <th scope="col" width="22%">2 – Fair</th>
+                            <th scope="col" width="22%">1 – Poor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-type="content.focus">
+                            <th scope="row">Focus</th>
+                            <td data-score="4" data-type="content.focus">
+                                Purpose of presentation is clear from the outset. Supporting ideas maintain clear focus on the topic.
+                            </td>
+                            <td data-score="3" data-type="content.focus">
+                                Topic of the presentation is clear.Content generally supports the purpose.
+                            </td>
+                            <td data-score="2" data-type="content.focus">
+                                Presentation lacks clear direction. Big ideas not specifically identified.
+                            </td>
+                            <td data-score="1" data-type="content.focus">
+                                No focus at all. Audience cannot determine purpose of presentation.
+                            </td>
+                        </tr>
+                        <tr data-type="content.organization">
+                            <th scope="row">Organization</th>
+                            <td data-score="4" data-type="content.organization">
+                                Student presents information in logical, interesting sequence that audience follows.
+                            </td>
+                            <td data-score="3" data-type="content.organization">
+                                Student presents information in logical sequence that audience can follow.
+                            </td>
+                            <td data-score="2" data-type="content.organization">
+                                Audience has difficulty following because student jumps around.
+                            </td>
+                            <td data-score="1" data-type="content.organization">
+                                Audience cannot understand because there is no sequence of information.
+                            </td>
+                        </tr>
+                        <tr data-type="content.visual_adis">
+                            <th scope="row">Visual Aids</th>
+                            <td data-score="4" data-type="content.visual_aids">
+                                Visual aids are readable, clear and professional looking, enhancing the message.
+                            </td>
+                            <td data-score="3" data-type="content.visual_aids">
+                                Visual aids are mostly readable, clear and professional looking.
+                            </td>
+                            <td data-score="2" data-type="content.visual_aids">
+                                Significant problems with readability, clarity, professionalism of visual aids.
+                            </td>
+                            <td data-score="1" data-type="content.visual_aids">
+                                Visual aids are all unreadable, unclear and/or unprofessional.
+                            </td>
+                        </tr>
+                        <tr data-type="content.QA">
+                            <th scope="row">Question & Answer</th>
+                            <td data-score="4" data-type="content.QA">
+                                Speaker has prepared relevant questions for opening up the discussion and is able to stimulate discussion.
+                            </td>
+                            <td data-score="3" data-type="content.QA">
+                                Speaker has prepared relevant questions for opening up the discussion and is somewhat able to stimulate discussion.
+                            </td>
+                            <td data-score="2" data-type="content.QA">
+                                Speaker has prepared questions but is not really able to stimulate discussion.
+                            </td>
+                            <td data-score="1" data-type="content.QA">
+                                Speaker has not prepared questions.
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
 
                 <table class="table table-bordered" style="margin-top: 30px; text-align: center;">
-                  <thead>
-                    <tr>
-                      <th scope="col" width="12%">Language and Delivery</th>
-                      <th scope="col" width="22%">4 – Excellent</th>
-                      <th scope="col" width="22%">3 – Good</th>
-                      <th scope="col" width="22%">2 – Fair</th>
-                      <th scope="col" width="22%">1 – Poor</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr data-type="lang.eye_contact">
-                        <th scope="row">Eye Contact</th>
-                        <td data-score="4" data-type="lang.eye_contact">
-                            Holds attention of entire audience with the use of direct eye contact, seldom looking at notes.
-                        </td>
-                        <td data-score="3" data-type="lang.eye_contact">
-                            Consistent use of direct eye contact with audience, but often returns to notes.
-                        </td>
-                        <td data-score="2" data-type="lang.eye_contact">
-                            Displays minimal eye contact with audience, while reading mostly from the notes.
-                        </td>
-                        <td data-score="1" data-type="lang.eye_contact">
-                            No eye contact with audience; entire presentation is read from notes.
-                        </td>
-                    </tr>
-                    <tr data-type="lang.enthusiasm">
-                        <th scope="row">Enthusiasm</th>
-                        <td data-score="4" data-type="lang.enthusiasm">
-                            Demonstrates a strong, positive feeling about topic during entire presentation.
-                        </td>
-                        <td data-score="3" data-type="lang.enthusiasm">
-                            Mostly shows positive feelings about topic.
-                        </td>
-                        <td data-score="2" data-type="lang.enthusiasm">
-                            Shows some negativity toward topic presented.
-                        </td>
-                        <td data-score="1" data-type="lang.enthusiasm">
-                            Shows no interest in topic presented.
-                        </td>
-                    </tr>
-                    <tr data-type="lang.elocution">
-                        <th scope="row">Elocution</th>
-                        <td data-score="4" data-type="lang.elocution">
-                            Student uses a clear voice so that all audience members can hear presentation.
-                        </td>
-                        <td data-score="3" data-type="lang.elocution">
-                            Student’s voice is clear. Most audience members can hear presentation.
-                        </td>
-                        <td data-score="2" data-type="lang.elocution">
-                            Student’s voice is low. Audience has difficulty hearing presentation.
-                        </td>
-                        <td data-score="1" data-type="lang.elocution">
-                            Student mumbles, speaks too quietly for a majority of audience to hear.
-                        </td>
-                    </tr>
-                  </tbody>
+                    <thead>
+                        <tr>
+                            <th scope="col" width="12%">Language and Delivery</th>
+                            <th scope="col" width="22%">4 – Excellent</th>
+                            <th scope="col" width="22%">3 – Good</th>
+                            <th scope="col" width="22%">2 – Fair</th>
+                            <th scope="col" width="22%">1 – Poor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-type="lang.eye_contact">
+                            <th scope="row">Eye Contact</th>
+                            <td data-score="4" data-type="lang.eye_contact">
+                                Holds attention of entire audience with the use of direct eye contact, seldom looking at notes.
+                            </td>
+                            <td data-score="3" data-type="lang.eye_contact">
+                                Consistent use of direct eye contact with audience, but often returns to notes.
+                            </td>
+                            <td data-score="2" data-type="lang.eye_contact">
+                                Displays minimal eye contact with audience, while reading mostly from the notes.
+                            </td>
+                            <td data-score="1" data-type="lang.eye_contact">
+                                No eye contact with audience; entire presentation is read from notes.
+                            </td>
+                        </tr>
+                        <tr data-type="lang.enthusiasm">
+                            <th scope="row">Enthusiasm</th>
+                            <td data-score="4" data-type="lang.enthusiasm">
+                                Demonstrates a strong, positive feeling about topic during entire presentation.
+                            </td>
+                            <td data-score="3" data-type="lang.enthusiasm">
+                                Mostly shows positive feelings about topic.
+                            </td>
+                            <td data-score="2" data-type="lang.enthusiasm">
+                                Shows some negativity toward topic presented.
+                            </td>
+                            <td data-score="1" data-type="lang.enthusiasm">
+                                Shows no interest in topic presented.
+                            </td>
+                        </tr>
+                        <tr data-type="lang.elocution">
+                            <th scope="row">Elocution</th>
+                            <td data-score="4" data-type="lang.elocution">
+                                Student uses a clear voice so that all audience members can hear presentation.
+                            </td>
+                            <td data-score="3" data-type="lang.elocution">
+                                Student’s voice is clear. Most audience members can hear presentation.
+                            </td>
+                            <td data-score="2" data-type="lang.elocution">
+                                Student’s voice is low. Audience has difficulty hearing presentation.
+                            </td>
+                            <td data-score="1" data-type="lang.elocution">
+                                Student mumbles, speaks too quietly for a majority of audience to hear.
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
 
                 <table class="table table-bordered" style="margin-top: 30px; text-align: center;">
-                  <thead>
-                    <tr>
-                      <th scope="col" width="12%">Technical</th>
-                      <th scope="col" width="22%">4 – Excellent</th>
-                      <th scope="col" width="22%">3 – Good</th>
-                      <th scope="col" width="22%">2 – Fair</th>
-                      <th scope="col" width="22%">1 – Poor</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr data-type="technical.knowledge">
-                        <th scope="row">Knowledge</th>
-                        <td data-score="4" data-type="technical.knowledge">
-                            Demonstrate clear knowledge and understanding of the subject.
-                        </td>
-                        <td data-score="3" data-type="technical.knowledge">
-                            Show clear knowledge and understanding of most subject area.
-                        </td>
-                        <td data-score="2" data-type="technical.knowledge">
-                            Show some knowledge and understanding of the subject area.
-                        </td>
-                        <td data-score="1" data-type="technical.knowledge">
-                            Show no knowledge and understanding of the subject area.
-                        </td>
-                    </tr>
-                    <tr data-type="technical.research">
-                        <th scope="row">Research</th>
-                        <td data-score="4" data-type="technical.research">
-                            Evidence of thorough research and preparation.
-                        </td>
-                        <td data-score="3" data-type="technical.research">
-                            Evidence of sufficient research and preparation.
-                        </td>
-                        <td data-score="2" data-type="technical.research">
-                            Evidence of some research and preparation.
-                        </td>
-                        <td data-score="1" data-type="technical.research">
-                            Evidence of no research and preparation.
-                        </td>
-                    </tr>
-                    <tr data-type="technical.ideas">
-                        <th scope="row">Discussion of new ideas</th>
-                        <td data-score="4" data-type="technical.ideas">
-                            Demonstrate thorough knowledge while discussing new ideas.
-                        </td>
-                        <td data-score="3" data-type="technical.ideas">
-                            Show sufficient knowledge while discussing new ideas.
-                        </td>
-                        <td data-score="2" data-type="technical.ideas">
-                            Show some knowledge while discussing new ideas.
-                        </td>
-                        <td data-score="1" data-type="technical.ideas">
-                            Show no knowledge while discussing new ideas.
-                        </td>
-                    </tr>
-                    <tr data-type="technical.argument">
-                        <th scope="row">Argument</th>
-                        <td data-score="4" data-type="technical.argument">
-                            Opinion set out in a concise and persuasive manner.
-                        </td>
-                        <td data-score="3" data-type="technical.argument">
-                            Opinion is not concise and persuasive manner.
-                        </td>
-                        <td data-score="2" data-type="technical.argument">
-                            Opinion is clearly demonstrated but not persuasive.
-                        </td>
-                        <td data-score="1" data-type="technical.argument">
-                            Opinion is not demonstrated or highlighted.
-                        </td>
-                    </tr>
-                    <tr data-type="technical.questions">
-                        <th scope="row">Questions</th>
-                        <td data-score="4" data-type="technical.questions">
-                            Responded very well to technical questions.
-                        </td>
-                        <td data-score="3" data-type="technical.questions">
-                            Could answer most technical questions related to the presentation.
-                        </td>
-                        <td data-score="2" data-type="technical.questions">
-                            Could answer some technical questions related to the presentation.
-                        </td>
-                        <td data-score="1" data-type="technical.questions">
-                            Could not answer any technical questions related to the presentation.
-                        </td>
-                    </tr>
-                  </tbody>
+                    <thead>
+                        <tr>
+                            <th scope="col" width="12%">Technical</th>
+                            <th scope="col" width="22%">4 – Excellent</th>
+                            <th scope="col" width="22%">3 – Good</th>
+                            <th scope="col" width="22%">2 – Fair</th>
+                            <th scope="col" width="22%">1 – Poor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-type="technical.knowledge">
+                            <th scope="row">Knowledge</th>
+                            <td data-score="4" data-type="technical.knowledge">
+                                Demonstrate clear knowledge and understanding of the subject.
+                            </td>
+                            <td data-score="3" data-type="technical.knowledge">
+                                Show clear knowledge and understanding of most subject area.
+                            </td>
+                            <td data-score="2" data-type="technical.knowledge">
+                                Show some knowledge and understanding of the subject area.
+                            </td>
+                            <td data-score="1" data-type="technical.knowledge">
+                                Show no knowledge and understanding of the subject area.
+                            </td>
+                        </tr>
+                        <tr data-type="technical.research">
+                            <th scope="row">Research</th>
+                            <td data-score="4" data-type="technical.research">
+                                Evidence of thorough research and preparation.
+                            </td>
+                            <td data-score="3" data-type="technical.research">
+                                Evidence of sufficient research and preparation.
+                            </td>
+                            <td data-score="2" data-type="technical.research">
+                                Evidence of some research and preparation.
+                            </td>
+                            <td data-score="1" data-type="technical.research">
+                                Evidence of no research and preparation.
+                            </td>
+                        </tr>
+                        <tr data-type="technical.ideas">
+                            <th scope="row">Discussion of new ideas</th>
+                            <td data-score="4" data-type="technical.ideas">
+                                Demonstrate thorough knowledge while discussing new ideas.
+                            </td>
+                            <td data-score="3" data-type="technical.ideas">
+                                Show sufficient knowledge while discussing new ideas.
+                            </td>
+                            <td data-score="2" data-type="technical.ideas">
+                                Show some knowledge while discussing new ideas.
+                            </td>
+                            <td data-score="1" data-type="technical.ideas">
+                                Show no knowledge while discussing new ideas.
+                            </td>
+                        </tr>
+                        <tr data-type="technical.argument">
+                            <th scope="row">Argument</th>
+                            <td data-score="4" data-type="technical.argument">
+                                Opinion set out in a concise and persuasive manner.
+                            </td>
+                            <td data-score="3" data-type="technical.argument">
+                                Opinion is not concise and persuasive manner.
+                            </td>
+                            <td data-score="2" data-type="technical.argument">
+                                Opinion is clearly demonstrated but not persuasive.
+                            </td>
+                            <td data-score="1" data-type="technical.argument">
+                                Opinion is not demonstrated or highlighted.
+                            </td>
+                        </tr>
+                        <tr data-type="technical.questions">
+                            <th scope="row">Questions</th>
+                            <td data-score="4" data-type="technical.questions">
+                                Responded very well to technical questions.
+                            </td>
+                            <td data-score="3" data-type="technical.questions">
+                                Could answer most technical questions related to the presentation.
+                            </td>
+                            <td data-score="2" data-type="technical.questions">
+                                Could answer some technical questions related to the presentation.
+                            </td>
+                            <td data-score="1" data-type="technical.questions">
+                                Could not answer any technical questions related to the presentation.
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
 
                 <div class="row">

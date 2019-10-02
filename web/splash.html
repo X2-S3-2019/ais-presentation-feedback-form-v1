@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html class="h-100">
+    <head>
+        <title>AIS Electronic Assessment Software</title>
+        <link rel="stylesheet" href="asset/index.css">
+        <link rel="stylesheet" href="asset/css/lib/bootstrap4_3_1.min.css">
+        <script src="asset/js/lib/jquery-3.4.1.min.js"></script>
+        <script src="asset/js/lib/popper.min.js" "></script>
+        <script src="asset/js/lib/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/eel.js"></script>
+        <script type="text/javascript">
+        </script>
+    </head>
+    <body>
+        <div class="index">
+            <div class="menu d-flex">
+                <div class="logo">
+                    <img src="./asset/logo.jpeg">
+                </div>
+                <div class="title">
+                    <h1 class="mt-4">Student Assessment Software</h1>
+                </div>
+                <div id="intro-carusel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-interval="20000">
+                            <div class="d-block w-100"><p class="text-center">Welcome to Student Assessment Software</p>
+                            <p>To start using student presentations software, you should do the following actions:</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item" data-interval="2000">
+                            <p>
+                                Press "Setup Presentations" button and create courses with course names and ids. <br> 
+                                Once the courses have been set, click the Presentations tab and select a course and create a 
+                                presentation with name and date of the presentation.
+                            </p>
+                        </div>
+                        <div class="carousel-item">
+                            <p>
+                                When courses and presentations are set, press "Set files path" button to setup the saving path for word files.
+                            </p>
+                        </div>
+                        <div class="carousel-item">
+                            <p>
+                                Next, press click on "Go to assessment" button to start the presentation assessment. <br>
+                                Select an appropriate course and presentation. Input any student ID and press "Get student full name" button to get the student name by his id. <br>
+                                You can click "Start Presentations Timer" button to start the counter of the presentation length. <br>
+                                Click on tiles in the assessment table to make an assessment. When the assessment is finished, click Save button to get assessment as a word file. <br>
+                            </p>
+                        </div>
+                        
+                    </div>
+                    <a class="carousel-control-prev" href="#intro-carusel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#intro-carusel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+                <div class="buttons row">
+                    <div class="col-2 d-flex">
+                    </div>
+                    <div class="col-4 d-flex">
+                        <button type="button" class="btn btn-success" id="skip_intro">Skip</button>
+                    </div>
+                </div>
+            </div>
+    </body>
+    <script src="./asset/js/mainpage.js?v=1.10"></script>
+</html>

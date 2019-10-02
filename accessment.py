@@ -15,7 +15,7 @@ from email.header import Header
 
 template = "Template.docx"
 db_name = "ais.db"
-file_path = "~/Downloads/"
+file_path = os.getcwd()
 
 eel.init('web')
 datastore.initDb(db_name);
@@ -95,6 +95,10 @@ def setFolder():
 		print(e)
 		return False
 	return True
+
+@eel.expose
+def getRandomStudentFullName():
+    return names.getRandomFullName()
 
 @eel.expose
 def generdate_word(options, header):
@@ -195,9 +199,8 @@ def generdate_word(options, header):
 		organization_3 = names['organization_3'],
 		organization_4 = names['organization_4']
 	);
-	# filename = file_path + "/" + 'result-' + topzone['sname'] + '(' + topzone['sid'] + ')- ' + '{:%d-%b-%Y}'.format(date.today()) + '.docx'
-	filename = ""
-	# print(filename)
+	filename = file_path + "/" + 'result-' + topzone['sname'] + '(' + topzone['sid'] + ')-' + '{:%d-%b-%Y}'.format(date.today()) + '.docx'
+	print(filename)
 
 	try:
 		# document.write(filename)
@@ -248,8 +251,8 @@ def openURL():
 #    eel.say_hello_js('Python World!')
 #print(names.getRandomName() + ' ' + names.getRandomSurName())
 
-print(datastore.getPresentations('wd40'))
-eel.start('main.html', size=(1000, 600), disable_cache=True)
+#print(datastore.getPresentations('wd40'))
+eel.start('splash.html', size=(1000, 600), disable_cache=True)
 
 
 
