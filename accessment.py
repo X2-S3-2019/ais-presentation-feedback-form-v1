@@ -13,7 +13,7 @@ from email.mime.text import MIMEText
 from email.header import Header
 
 
-template = "Template.docx"
+template = "./template/Template.docx"
 db_name = "ais.db"
 file_path = os.getcwd()
 
