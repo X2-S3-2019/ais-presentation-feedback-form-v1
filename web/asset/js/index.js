@@ -1,4 +1,6 @@
 var mainpage = {
+
+
 	startBtn: $("#start"),
 	setfolderBtn: $("#setfolder"),
     timerInterval:0,
@@ -34,8 +36,8 @@ var mainpage = {
         })
         setTimeout(function () { mainpage.getPresentations() }, 1000);
 
-        $(document).on('click', '#get-student-name', function () {
-            if ($('#get-student-name').hasClass('disabled') || $('#student_name').val().length > 0) {
+        $(document).on('click', '#get_student_name', function () {
+            if ($('#get_student_name').hasClass('disabled') || $('#student_name').val().length > 0) {
                 return false;
             }
         
@@ -47,9 +49,9 @@ var mainpage = {
             mainpage.getPresentations();
             $('#student_name').val('')
             if ($('#student_id').val().length > 0) {
-                $('#get-student-name').removeClass('disabled');
+                $('#get_student_name').removeClass('disabled');
             } else {
-                $('#get-student-name').addClass('disabled');
+                $('#get_student_name').addClass('disabled');
             }
         })
         $(document).on('click', '#start_timer', function () {
@@ -91,8 +93,8 @@ var mainpage = {
             presentations.forEach(function (row) {
                 $('#presentations-assess').append(
                     '<option value=' + row[0] + '>' +
-                    row[1] + ' ' + row[2] +
-                    '</option>'
+                    row[1] + ' (' + row[2] +
+                    ')</option>'
                 )
             })
         });
@@ -159,12 +161,46 @@ var assess = {
 				classname = "table-warning";
 			} else if ( score == 1 ) {
 				classname = "table-danger";
-			}
+			} 
 			$('td[data-type="' + type + '"]').removeClass();
 			$(e.target).addClass(classname);
 			var tmp = type.split('.')
 			that.data[tmp[0]][tmp[1]] = score;
+			updateScores(that.data, tmp[1]);
 		});
+
+		function updateScores(data, criteria){
+			// Brute Force D<
+			var content_total = 0;
+
+			content_total += parseInt(data['content']['focus']);
+			content_total += parseInt(data['content']['organization']);
+			content_total += parseInt(data['content']['visual_aids']);
+			content_total += parseInt(data['content']['QA']);
+
+			$('.contentScore').html(content_total);
+
+			var language_total = 0;
+
+			language_total += parseInt(data['lang']['eye_contact']);
+			language_total += parseInt(data['lang']['enthusiasm']);
+			language_total += parseInt(data['lang']['elocution']);
+
+			$('.languageScore').html(language_total);
+
+			var technical_total = 0;
+
+			technical_total += parseInt(data['technical']['knowledge']);
+			technical_total += parseInt(data['technical']['research']);
+			technical_total += parseInt(data['technical']['ideas']);
+			technical_total += parseInt(data['technical']['argument']);
+			technical_total += parseInt(data['technical']['questions']);
+
+			$('.technicalScore').html(technical_total);
+
+			$('.totalScore').html(content_total + language_total + technical_total);
+
+		}
 	},
 	initalHeader: function() {
 		var that = this;
@@ -209,8 +245,8 @@ var assess = {
             return false;
         }
 		if ( this.student_name.val() == "" ) {
-			this.student_name.addClass("is-invalid");
-			return false;
+			// this.student_name.addClass("is-invalid");
+			// return false;
         }
         else {
 			this.student_name.removeClass("is-invalid");
@@ -230,7 +266,7 @@ var assess = {
 			return false;
 		} else {
 			this.topic.removeClass("is-invalid");
-			this.header.topic = this.topic.val();
+			this.header.topic = this.topic.text();
 		}
 		return true;
 	},
@@ -298,6 +334,14 @@ function AisAlert(confirm_msg) {
     alert(confirm_msg);
 }
 
+function showSuccessfulSave(msg){
+	console.log('Jesus?');
+	$('.successSavePopupBody').html(msg);
+	$('#popupSuccessfulSave').modal('show');
+
+}
+
+
 function get_elapsed_time_string(total_seconds) {
     function pretty_time_string(num) {
         return (num < 10 ? "0" : "") + num;
@@ -323,6 +367,7 @@ function get_elapsed_time_string(total_seconds) {
 }
 
 eel.expose(AisAlert);
+eel.expose(showSuccessfulSave);
 
 
 

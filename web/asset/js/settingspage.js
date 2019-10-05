@@ -31,12 +31,12 @@ var settings = {
                 settings.initPresentationTab();
             });
         });
-        this.studentsTab.on('click', function () {
-            settings.container.load("studentstab.html");
-        });
-        this.courseStudentsTab.on('click', function () {
-            settings.container.load("coursestudentstab.html");
-        });
+        // this.studentsTab.on('click', function () {
+        //     settings.container.load("studentstab.html");
+        // });
+        // this.courseStudentsTab.on('click', function () {
+        //     settings.container.load("coursestudentstab.html");
+        // });
     },
 
     initPresentationTab() {
@@ -49,6 +49,13 @@ var settings = {
                     )
             })
         });
+
+        var today = new Date();
+        var dd = ("0" + (today.getDate())).slice(-2);
+        var mm = ("0" + (today.getMonth() +　1)).slice(-2);
+        var yyyy = today.getFullYear();
+        today = yyyy + '-' + mm + '-' + dd ;
+        $("#presentation-date").attr("value", today);
 
         $(document).on('change', '.presentations #courses', function (el) {
             settings.getPresentations($('.presentations #courses').val())
@@ -117,7 +124,7 @@ var settings = {
                     '<tr>' +
                         '<th scope="row">' + row[1] + '</th>' +
                         '<td>' + row[2]  +'</td>' +
-                        '<td> <button class="link"> remove </button></td>' +
+                        '<td> <button class="link btn btn-danger"> Remove </button></td>' +
                     '</tr')
             })        
         });
@@ -133,7 +140,7 @@ var settings = {
                     '<th scope="row">' + row[0] + '</th>' +
                     '<td>' + row[2] + '</td>' +
                     '<td>' + row[1] + '</td>' +
-                    '<td> <button class="link"> remove </button></td>' +
+                    '<td> <button class="link btn btn-danger">Remove</button></td>' +
                     '</tr')
             })
         });
@@ -158,7 +165,7 @@ var settings = {
 			if ( that.startBtn.hasClass("disabled") === true ) {
 				// return;
 			}
-			window.location.href = "/accessment.html"
+			window.location.href = "/assessment.html"
 		});
     },
     initAddCourseBtn: function () {
@@ -169,7 +176,7 @@ var settings = {
 };
 
 $(document).ready(function(){
-	settings.init();
+    settings.init();
 });
 
 function reload(confirm_msg) {

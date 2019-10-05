@@ -209,7 +209,7 @@ def generdate_word(options, header):
 		eel.AisAlert("error occures!" + e)
 		pass
 	eel.showSurvey()
-	eel.AisAlert("Word file was created in " + filename + " successfully!")
+	eel.showSuccessfulSave("The word file was created in " + filename + ".")
 
 	# print(document.get_merge_fields())
 	# print(options)
@@ -252,7 +252,7 @@ def openURL():
 #print(names.getRandomName() + ' ' + names.getRandomSurName())
 
 #print(datastore.getPresentations('wd40'))
-eel.start('splash.html', size=(1000, 600), disable_cache=True)
+eel.start('main.html', size=(1000, 600), disable_cache=True)
 
 
 
