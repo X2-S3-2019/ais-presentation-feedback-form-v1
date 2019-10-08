@@ -334,11 +334,9 @@ function AisAlert(confirm_msg) {
     alert(confirm_msg);
 }
 
-function showSuccessfulSave(msg){
-	console.log('Jesus?');
-	$('.successSavePopupBody').html(msg);
+function showSuccessfulSave(filename){
+	$('.successSavePopupBody').html("The document has been successfully saved in " + filename);
 	$('#popupSuccessfulSave').modal('show');
-
 }
 
 
