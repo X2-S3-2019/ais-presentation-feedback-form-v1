@@ -20,7 +20,7 @@ def resource_path(relative_path):
     return os.path.join(base_path, relative_path)
 
 template = resource_path("./template/Template.docx")
-db_name = resource_path("./ais.db")
+db_name = os.path.expanduser('~') + "/.ais.db"
 file_path = os.getcwd()
 
 eel.init('web')
