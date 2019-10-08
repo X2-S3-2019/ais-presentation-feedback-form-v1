@@ -1,10 +1,12 @@
 var start = {
 	startBtn: $("#start"),
-	settingsBtn: $("#settings"),
+    settingsBtn: $("#btnSetup"),
+    assessmentBtn: $("#btnAssessment"),
     skipIntroBtn: $("#skip_intro"),
     init: function () {
         this.initSettingsBtn();
         this.initStartBtn();
+        this.initAssessmentBtn();
         this.initSkipIntroBtn();
 	},
 	
@@ -17,6 +19,12 @@ var start = {
 			window.location.href = "/assessment.html"
 		});
     },
+    initAssessmentBtn: function () {
+        var that = this;
+        this.assessmentBtn.on('click', function () {
+            window.location.href = "assessment.html"
+        });
+    },
     initSkipIntroBtn: function () {
         var that = this;
         this.skipIntroBtn.on('click', function () {
@@ -26,7 +34,6 @@ var start = {
     initSettingsBtn: function () {
         var that = this;
         this.settingsBtn.on('click', function () {
-            console.log('123123');
             window.location.href = "coursesettings.html"
         });
     }

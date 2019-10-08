@@ -116,7 +116,7 @@ def generdate_word(options, header):
 		content_total += int(data["content"][tmp])
 		for i in range(1,5):
 			names[tmp + "_" + str(i)] = ""
-		names[tmp + "_" + data["content"][tmp]] = "selected"
+		names[tmp + "_" + data["content"][tmp]] = "SELECTED"
 
 	lang_total = 0
 	for tmp in data["lang"]:
@@ -125,7 +125,7 @@ def generdate_word(options, header):
 			if str(i) == data["lang"][tmp]:
 				continue
 			names[tmp + "_" + str(i)] = ""
-		names[tmp + "_" + data["lang"][tmp]] = "selected"
+		names[tmp + "_" + data["lang"][tmp]] = "SELECTED"
 
 
 	technical_total = 0
@@ -133,7 +133,7 @@ def generdate_word(options, header):
 		technical_total += int(data["technical"][tmp])
 		for i in range(1,5):
 			names[tmp + "_" + str(i)] = ""
-		names[tmp + "_" + data["technical"][tmp]] = "selected"
+		names[tmp + "_" + data["technical"][tmp]] = "SELECTED"
 
 	score = content_total + lang_total + technical_total
 
@@ -252,7 +252,7 @@ def openURL():
 #print(names.getRandomName() + ' ' + names.getRandomSurName())
 
 #print(datastore.getPresentations('wd40'))
-eel.start('main.html', size=(1000, 600), disable_cache=True)
+eel.start('onboarding.html', size=(1000, 600), disable_cache=True)
 
 
 

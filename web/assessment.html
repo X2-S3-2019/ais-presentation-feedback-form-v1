@@ -4,9 +4,11 @@
 <head>
     <title>AIS Electric Assess Software</title>
     <link rel="stylesheet" href="./asset/css/main.css">
+    <link rel="stylesheet" href="./asset/css/all.css">
+    <link rel="stylesheet" href="./asset/css/menu.css">
     <link rel="stylesheet" href="./asset/css/lib/bootstrap4_3_1.min.css">
     <link rel="stylesheet" href="./asset/css/lib/jquery.rateyo.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet"> -->
     <script src="./asset/js/lib/jquery-3.4.1.min.js"></script>
     <script src="./asset/js/lib/popper.min.js"></script>
     <script src="./asset/js/lib/bootstrap.min.js"></script>
@@ -33,9 +35,10 @@
                 </div>
                 <div class="modal-body">
                     <input type="number" class="form-control" placeholder="Student ID" id="student_id" />
-                    <p class="text-center"><button class="btn mt-4 btn-primary disabled" id="get_student_name">Get
-                            student name</button></p>
-                    <input type="text" class="form-control" readonly placeholder="Student Full Name"
+                    <br />
+                    <!-- <p class="text-center"><button class="btn mt-4 btn-primary disabled" id="get_student_name">Get
+                            student name</button></p> -->
+                    <input type="text" class="form-control" placeholder="Student Full Name"
                         id="student_name" />
                     <br />
                     <span>Course:</span>
@@ -60,7 +63,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    Confirm Exit
+                    <h5 class="modal-title" id="modalTitle">Confirm Exit</h5>
                 </div>
                 <div class="modal-body">
                     Your progress will not be saved when you exit. Are you sure you want to exit assessment?
@@ -81,7 +84,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    Confirm Reset
+                    <h5 class="modal-title" id="modalTitle">Confirm Reset</h5>
                 </div>
                 <div class="modal-body">
                    Are you sure you want to reset the assessment?
@@ -102,10 +105,10 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    Assessment Result
+                    <h5 class="modal-title" id="modalTitle">Assessment Result</h5>
                 </div>
-                <div class="modal-body">
-                You have assessed:
+                <div id="divAssessmentResultBody" class="modal-body">
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Go Back</button>
@@ -123,7 +126,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                    Assessment Successfully Saved
+                    <h5 class="modal-title" id="modalTitle">Assessment Successfully Saved</h5>
                     </div>
                     <div class="modal-body">
                     <p class="successSavePopupBody"></p>
@@ -397,7 +400,7 @@
                 <button type="button" style="width: 100%" class="btn btn-primary" data-toggle="modal" data-target="#popupConfirmReset">Reset</button>
             </div>
             <div class="col-2">
-                <button type="button" style="width: 100%" class="btn btn-success" data-toggle="modal" data-target="#popupAssessmentResult">Save</button>
+                <button type="button" style="width: 100%" class="btnSaveAssessment btn btn-success">Review</button>
             </div>
         </div>
 
@@ -422,7 +425,7 @@
 
         <menu class="items-wrapper">
             <a href="#" class="menu-item fas fa-home" title="Main Menu"></a>
-            <a href="#" class="menu-item fas fa-users-cog" title="Setup"></a>
+            <a href="#.html" class="menu-item fas fa-users-cog" title="Setup"></a>
             <a href="#" class="menu-item fa fa-question-circle" title="How to Use"></a>
         </menu>
 
