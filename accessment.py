@@ -2,7 +2,7 @@
 
 
 from __future__ import print_function	# For Py2/3 compatibility
-import eel, json, os, datastore
+import eel, json, os, datastore, sys
 from mailmerge import MailMerge
 from datetime import date
 import tkinter as tk
