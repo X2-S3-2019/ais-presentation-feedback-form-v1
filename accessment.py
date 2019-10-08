@@ -209,7 +209,7 @@ def generdate_word(options, header):
 		eel.AisAlert("error occures!" + e)
 		pass
 	eel.showSurvey()
-	eel.showSuccessfulSave("The word file was created in " + filename + ".")
+	eel.showSuccessfulSave(filename)
 
 	# print(document.get_merge_fields())
 	# print(options)
