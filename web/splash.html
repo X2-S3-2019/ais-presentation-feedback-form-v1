@@ -11,40 +11,83 @@
         <script type="text/javascript">
         </script>
     </head>
-    <body>
-        <div class="index">
+    <style>
+    .small-logo {
+    width: 100px;
+  }
+
+  .app-title {
+    vertical-align: middle;
+    margin-left: 20px;
+    font-size: 25px;
+    font-weight: 700;
+    color: white;
+  }
+  .tutorial-body {
+      display: flex;
+      justify-content: center;
+  }
+    </style>
+    <body style="overflow: hidden; background: #fff;">
+        <div>
+        <img class="small-logo" src="asset/imgs/ais-logo-vector.png" />
+        <span class="app-title">Presentation Assessment Software</span>
+    </div>
+        <div class="tutorial-body">
             <div class="menu d-flex">
-                <div class="logo">
+                <!-- <div class="logo">
                     <img src="./asset/logo.jpeg">
-                </div>
+                </div> -->
                 <div class="title">
-                    <h1 class="mt-4">Presentation Assessment Software</h1>
+                    <h3 class="mt-4">How to Use the Presentation Assessment Software</h3>
                 </div>
+                <br />
                 <div id="intro-carusel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
-                        <div class="carousel-item active" data-interval="20000">
-                            <div class="d-block w-100"><p class="text-center">Welcome to Student Assessment Software</p>
-                            <p>To start using student presentations software, you should do the following actions:</p>
+                        <div class="carousel-item active">
+                            <div class="d-block w-100"><p class="text-center">
+                            <p>To start using student presentations software, you should do the following:</p>
                             </div>
                         </div>
-                        <div class="carousel-item" data-interval="2000">
+                        <div class="carousel-item" data-interval="5000">
                             <p>
-                                Press "Setup Presentations" button and create courses with course names and ids. <br> 
-                                Once the courses have been set, click the Presentations tab and select a course and create a 
-                                presentation with name and date of the presentation.
+                                Press the "Setup Presentations" button to create courses by inputting the course ID and name.
+                            </p>
+                        </div>
+                        <div class="carousel-item">
+                                <p>
+                                Once the courses have been set, click the Presentations tab and select a course. Create a presentation by inputting the date of the presentation and the topic.
+                                </p>
+                            </div>
+                        <div class="carousel-item">
+                            <p>
+                                When courses and presentations are set, press "Set files path" button to specify where the generated word documents will be saved.
                             </p>
                         </div>
                         <div class="carousel-item">
                             <p>
-                                When courses and presentations are set, press "Set files path" button to setup the saving path for word files.
+                                Click on the "Assessment" button to start evaluating presentations.
                             </p>
                         </div>
                         <div class="carousel-item">
                             <p>
-                                Next, press click on "Go to assessment" button to start the presentation assessment. <br>
-                                Select an appropriate course and presentation. Input any student ID and press "Get student full name" button to get the student name by his id. <br>
-                                You can click "Start Presentations Timer" button to start the counter of the presentation length. <br>
-                                Click on tiles in the assessment table to make an assessment. When the assessment is finished, click Save button to get assessment as a word file. <br>
+                                Input the student ID and press "Get student name" button to get the student name. Then,
+                                select the appropriate course and presentation. 
+                            </p>
+                        </div>
+                        <div class="carousel-item">
+                            <p>
+                                You can click "Start Presentations Timer" button to keep track of the presentation's duration.
+                            </p>
+                        </div>
+                        <div class="carousel-item">
+                            <p>
+                                Click on the appropriate assessment based on the criteria. When the assessment is finished, click "Review" button to review the assessment scores.
+                            </p>
+                        </div>
+                        <div class="carousel-item">
+                            <p>
+                                Once you've reviewed the assessment, click the "Save" button to generate the word document. 
                             </p>
                         </div>
                         
@@ -59,10 +102,11 @@
                     </a>
                 </div>
                 <div class="buttons row">
-                    <div class="col-2 d-flex">
+                    <div class="col-4 d-flex">
+                        <button type="button" class="btn btn-yellow" id="btnSetup">Setup Presentations</button>
                     </div>
                     <div class="col-4 d-flex">
-                        <button type="button" class="btn btn-success" id="skip_intro">Skip</button>
+                        <button type="button" class="btn btn-success" id="btnAssessment">Start Assessment</button>
                     </div>
                 </div>
             </div>

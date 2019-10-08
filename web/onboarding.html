@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<head>
+    <title>AIS Electric Assess Software</title>
+    <link rel="stylesheet" href="./asset/css/onboarding.css">
+    <link rel="stylesheet" href="./asset/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet"> -->
+    <script src="./asset/js/lib/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+        <div class='walkthrough show reveal'>
+          <div class='walkthrough-pagination'>
+            <a class='dot active'></a>
+            <a class='dot'></a>
+            <a class='dot'></a>
+            <a class='dot'></a>
+          </div>
+          <div class='walkthrough-body'>
+            <ul class='screens animate'>
+              <li class='screen active'>
+                <div class='media'>
+                  <i class="custom-icon fa fa-users-cog"></i>
+                </div>
+                <h3>
+                  Setup
+                </h3>
+                <p>Prepare student and presentation information</p>
+              </li>
+              <li class='screen assessment'>
+                <div class='media'>
+                    <i class="custom-icon far fa fa-hand-point-up"></i>
+                </div>
+                <h3>
+                  Assessment
+                </h3>
+                <p>Easy-to-use point-and-click interface</p>
+              </li>
+              <li class='screen'>
+                <div class='media'>
+                        <i class="custom-icon fa fa-file-word"></i>
+                </div>
+                <h3>
+                    Reporting
+                </h3>
+                <p>Review assessment and generate word document</p>
+              </li>
+              <li class='screen get-started'>
+                <div class='media'>
+                  <i class="custom-icon fa fa-chalkboard-teacher"></i>
+                </div>
+                <h3>
+                  Get Started
+                </h3>
+                <p>Ready to evaluate student presentations?</p>
+              </li>
+            </ul>
+            <button class='prev-screen'>
+              <i class='icon-angle-left'></i>
+            </button>
+            <button class='next-screen'>
+              <i class='icon-angle-right'></i>
+            </button>
+          </div>
+          <div class='walkthrough-footer'>
+            <button class='button next-screen'>Next</button>
+            <a href="main.html"><button class='button finish close' disabled='true'>Finish</button></a>
+          </div>
+        </div>
+        <p style="text-align: center; position: absolute; bottom: 0;">
+          <a style="color: black" href="main.html">Skip</a>
+        </p>
+</body>
+<script src="./asset/js/onboarding.js"></script>
+</html>
