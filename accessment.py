@@ -13,8 +13,14 @@ from email.mime.text import MIMEText
 from email.header import Header
 
 
-template = "./template/Template.docx"
-db_name = "ais.db"
+
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
+
+template = resource_path("./template/Template.docx")
+db_name = resource_path("./ais.db")
 file_path = os.getcwd()
 
 eel.init('web')
