@@ -14,7 +14,7 @@ var start = {
 			if ( that.startBtn.hasClass("disabled") === true ) {
 				// return;
 			}
-			window.location.href = "/accessment.html"
+			window.location.href = "/assessment.html"
 		});
     },
     initSkipIntroBtn: function () {

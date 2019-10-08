@@ -3,6 +3,8 @@
     <head>
         <title>AIS Electronic Assess Software</title>
         <link rel="stylesheet" href="asset/index.css">
+        <link rel="stylesheet" href="asset/css/main.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
         <link rel="stylesheet" href="asset/css/lib/bootstrap4_3_1.min.css">
         <script src="asset/js/lib/jquery-3.4.1.min.js" ></script>
         <script src="asset/js/lib/popper.min.js" ></script>
@@ -20,11 +22,25 @@
                 </ul>
             </div>
             <div class="col-8 ml-4">
-                <button id="set_path" class="btn btn-yellow">Set files path</button>
-                <button id="to_assessment" class="btn bg-success ml-4">Go to assessment</button>
+                <button id="set_path" class="btn btn-primary">Set files path</button>
+                <!-- <button id="to_assessment" class="btn bg-success ml-4">Go to assessment</button> -->
             </div>
         </div>
         <div id="content">
+
+        </div>
+        <!-- Circular Menu -->
+        <div id="circularMenu" class="circular-menu">
+
+            <a class="floating-btn" onclick="document.getElementById('circularMenu').classList.toggle('active');">
+                <i class="fa fa-plus"></i>
+            </a>
+
+            <menu class="items-wrapper">
+                <a href="main.html" class="menu-item fas fa-home" title="Main Menu"></a>
+                <a href="assessment.html" class="menu-item fas fa-chalkboard-teacher" title="Assess"></a>
+                <a href="#" class="menu-item fa fa-question-circle" title="How to Use"></a>
+            </menu>
 
         </div>
     </body>
