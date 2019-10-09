@@ -156,6 +156,7 @@ def generdate_word(options, header):
 		content_total = str(content_total),
 		lang_total = str(lang_total),
 		score = str(score),
+		score_percentage = str(topzone['score_percentage']) + '%',
 		ideas_1 = names['ideas_1'],
 		ideas_2 = names['ideas_2'],
 		ideas_3 = names['ideas_3'],

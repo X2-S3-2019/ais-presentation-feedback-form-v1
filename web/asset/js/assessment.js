@@ -44,6 +44,7 @@ $(document).ready(function(){
         }
     });
 
+
     // Save Assessment
     $('.btnSaveAssessment').click(function(e){
         // Place student information and assessment results to popup
@@ -79,7 +80,6 @@ $(document).ready(function(){
         "</tbody>" +
         "</table>";
 
-        console.log(assessmentInfo);
         $('#divAssessmentResultBody').html(assessmentInfo);
 
         $('#popupAssessmentResult').modal('show');
