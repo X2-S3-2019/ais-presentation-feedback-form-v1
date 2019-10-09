@@ -249,13 +249,12 @@ def openURL():
 
 
 
-#@eel.expose
-#def say_hello_py(x):
-#    print('Hello from %s' % x)
-
-#    say_hello_py('Python World!');
-#    eel.say_hello_js('Python World!')
-#print(names.getRandomName() + ' ' + names.getRandomSurName())
+@eel.expose
+def say_hello_py(x):
+   print('Hello from %s' % x)
+   say_hello_py('Python World!');
+   eel.say_hello_js('Python World!')
+print(names.getRandomName() + ' ' + names.getRandomSurName())
 
 #print(datastore.getPresentations('wd40'))
 eel.start('onboarding.html', size=(1000, 600), disable_cache=True)
