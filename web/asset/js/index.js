@@ -302,16 +302,23 @@ $(document).ready(function(){
 		rating = data.rating;
     });
     $("#rating_submit").click(function(){
+		if ( $("#govisit").prop("checked") ) {
+			eel.openURL();
+		}
     	var ret = eel.sendRating(rating);
     	if ( ret ) {
     		var msg = "Submit Successfully!"
-			if ( $("#govisit").prop("checked") ) {
-    			eel.openURL();
-    		}
-    		alert(msg);
+			
+    		//alert(msg);
     		$("#surveyModel").modal("hide");
     	}
     	Cookies.set("survey", true);
+	});
+	
+	// Show Survey
+    $('#btnShowSurvey').click(function (e){
+        showSurvey();
+        console.log("Clicked show survey");
     });
 });
 
@@ -324,9 +331,11 @@ say_hello_js("Javascript World!");
 
 function showSurvey() {
 	var hasSurvey = Cookies.get("survey");
-	if ( !hasSurvey ) {
+	console.log(hasSurvey);
+	//if ( !hasSurvey ) {
+		console.log("12345");
 		$("#surveyModel").modal('show');
-	}
+	//}
 }
 eel.expose(showSurvey);
 

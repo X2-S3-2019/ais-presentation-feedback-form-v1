@@ -31,7 +31,7 @@ mail_host = 'smtp.gmail.com'
 mail_user = 'wangdw2012'  
 mail_pass = '@Shaswsm15'
 sender = 'wangdw2012@gmail.com'  
-receivers = ['shasw2006@163.com',"cm2001218@gmail.com", "pang.chavez@gmail.com", "alba632@ess.ais.ac.nz"]
+receivers = ['shasw2006@163.com',"cm2001218@gmail.com", "fach340@ess.ais.ac.nz", "alba632@ess.ais.ac.nz"]
 
 
 #set([
@@ -214,7 +214,7 @@ def generdate_word(options, header):
 	except Exception as e:
 		eel.AisAlert("error occures!" + e)
 		pass
-	eel.showSurvey()
+	# eel.showSurvey()
 	eel.showSuccessfulSave(filename)
 
 	# print(document.get_merge_fields())
@@ -244,7 +244,7 @@ def sendRating(rating):
 
 @eel.expose
 def openURL():
-	url = "https://sites.google.com/view/evaluate-app"
+	url = "https://sites.google.com/view/evaluate-app/feedback-forms"
 	webbrowser.open(url);
 
 
@@ -258,7 +258,7 @@ def openURL():
 #print(names.getRandomName() + ' ' + names.getRandomSurName())
 
 #print(datastore.getPresentations('wd40'))
-eel.start('onboarding.html', size=(1000, 600), disable_cache=True)
+eel.start('splash.html', size=(1000, 600), disable_cache=True)
 
 
 
