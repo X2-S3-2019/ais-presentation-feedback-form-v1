@@ -1,4 +1,9 @@
 $(document).ready(function(){
+
+    $(window).bind('beforeunload', function(){
+        eel.say_hello_py('hello python!');
+    });
+
     $('#btnAddTab').click(function (e) {
         e.preventDefault();
         var nextTabNum = $('#tabs li').length+1;

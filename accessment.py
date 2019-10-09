@@ -7,7 +7,7 @@ from mailmerge import MailMerge
 from datetime import date
 import tkinter as tk
 from tkinter import filedialog
-import names
+import names, time
 import smtplib, webbrowser
 from email.mime.text import MIMEText
 from email.header import Header
@@ -252,8 +252,11 @@ def openURL():
 @eel.expose
 def say_hello_py(x):
    print('Hello from %s' % x)
-   say_hello_py('Python World!');
-   eel.say_hello_js('Python World!')
+   time.sleep(0.5)
+
+   
+say_hello_py('Python World!');
+eel.say_hello_js('Python World!')
 print(names.getRandomName() + ' ' + names.getRandomSurName())
 
 #print(datastore.getPresentations('wd40'))
