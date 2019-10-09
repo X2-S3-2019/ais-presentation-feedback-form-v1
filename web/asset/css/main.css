@@ -141,17 +141,19 @@ body {
   }
 
   .menu-item label {
-    opacity: 0;
+    padding-top: 1em;
+    color: white;
+    font-size: 1.3em;
   }
 
-  .menu-item:hover label {
+  /* .menu-item:hover label {
     display: inline-block;
     padding-top: 1em;
     color: white;
     font-size: 1.3em;
     opacity: 1;
     transition: 0.5s;
-  }
+  } */
 
   .big-circle-bg {
     width: 150px;
