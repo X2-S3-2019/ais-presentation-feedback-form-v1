@@ -4,6 +4,11 @@ $(document).ready(function(){
         eel.say_hello_py('hello python!');
     });
 
+    /* Prevent right click */
+    $(document).on("contextmenu", function () {
+        return false;
+    });
+
     $('#btnAddTab').click(function (e) {
         e.preventDefault();
         var nextTabNum = $('#tabs li').length+1;
