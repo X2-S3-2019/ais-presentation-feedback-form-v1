@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>AIS Electric Assess Software</title>
+    <title>AIS Presentation Marking Tool</title>
     <link rel="stylesheet" href="./asset/css/main.css">
     <link rel="stylesheet" href="./asset/css/all.css">
     <link rel="stylesheet" href="./asset/css/menu.css">
@@ -143,7 +143,8 @@
 
         <!-- Show Survey -->
 
-        <div class="modal" tabindex="-1" role="dialog" id="surveyModel">
+        <!-- RATING VERSION (For Post-Session Rating) -->
+        <!-- <div class="modal" tabindex="-1" role="dialog" id="surveyModel">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -173,9 +174,55 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
+
+          <div class="modal" tabindex="-1" role="dialog" id="surveyModel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Give Feedback</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row">
+                          <div class="col-12">
+                              Thank you for using our application! <br />
+                              Will you be kind to give us feedback regarding your experience?
+                          </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Later</button>
+                      <button type="button" class="btn btn-primary" onclick="window.open('https://sites.google.com/view/evaluate-app/feedback-forms')">Give Feedback</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
         <!-- End of Show Survey -->
+
+        <!-- Choose File Path -->
+
+        
+        <div class="modal fade" id="popupChooseFilePath" tabindex="-1" role="dialog" aria-labelledby="chooseFilePathPopup" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalTitle">Choose a File Path</h5>
+                    </div>
+                    <div class="modal-body">
+                        You haven't set where your generated documents will be saved.
+                    </div>
+                    <div class="modal-footer">
+                        <button id="setfolder" class="btn btn-primary">Set Path</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- End Choose File Path -->
 
     <div class="padded">
         <button class="btn mt-4 mb-2 bg-success" id="start_timer">Start Presentation Timer</button>
@@ -436,7 +483,7 @@
                 <button type="button" style="width: 100%" class="btn btn-primary" data-toggle="modal" data-target="#popupConfirmReset">Reset</button>
             </div>
             <div class="col-2">
-                <button type="button" style="width: 100%" class="btnSaveAssessment btn btn-success">Review</button>
+                <button type="button" style="width: 100%" class="btnSaveAssessment btn btn-success">Calculate</button>
             </div>
         </div>
 
@@ -468,7 +515,7 @@
     </div>
 
 </body>
-<script src="./asset/js/global.js?v=1.11"></script>
+<script src="./asset/js/global.js"></script>
 <script src="./asset/js/index.js"></script>
 <script src="./asset/js/assessment.js"></script>
 

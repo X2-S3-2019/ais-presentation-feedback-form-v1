@@ -3,23 +3,29 @@ var mainpage = {
 
 	startBtn: $("#start"),
 	setfolderBtn: $("#setfolder"),
-    timerInterval:0,
-    init: function () {
-		this.initSetFolder();
-        this.initStartBtn();
-	},
-	initSetFolder: function() {
-		var that = this;
-		async function run() {
-            const res = await eel.setFolder();
-            if ( res ) {
-            	that.startBtn.removeClass("disabled");
-            }
-        }
-		this.setfolderBtn.click(function() {
-			run();
-		});
-	},
+	timerInterval:0,
+
+    // init: function () {
+	// 	this.initSetFolder();
+    //     this.initStartBtn();
+	// },
+
+	// This code has been moved to assess below
+
+	// initSetFolder: function() {
+	// 	var that = this;
+	// 	async function run() {
+	// 		const res = await eel.setFolder();
+	// 		console.log('Yes running');
+    //         // if ( res ) {
+    //         // 	that.startBtn.removeClass("disabled");
+    //         // }
+    //     }
+	// 	this.setfolderBtn.click(function() {
+	// 		console.log('Running?');
+	// 		run();
+	// 	});
+	// },
 	initStartBtn: function() {
 		var that = this;
 		this.startBtn.click(function() {
@@ -128,20 +134,41 @@ var assess = {
 		"sname": "",
 		"sid": "",
 		"topic": "",
+		"score_percentage": 0,
 	},
 	student_name: $("#student_name"),
 	student_id: $("#student_id"),
     topic: $("#presentations-assess"),
 	saveBtn: $("#save"),
 	resetBtn: $("#reset"),
+	totalScore: $('.totalScore'),
+	setfolderBtn: $("#setfolder"),
+	isFilePathSet: false,
 
 	// generateBtn: $("#generate"),
 	init: function() {
 		this.initialSelect();
 		this.initalHeader();
         this.initialSave();
-        this.initialReset();
+		this.initialReset();
+		this.initSetFolder();
         mainpage.initCourses();
+	},
+	initSetFolder: function() {
+		var that = this;
+		async function run() {
+			const res = await eel.setFolder();
+			
+            if ( res ) {
+				$('#popupChooseFilePath').modal('toggle');
+				localStorage.setItem('isPathSet', true);
+				assess.generateWordDocument();
+            }
+        }
+		this.setfolderBtn.click(function() {
+			console.log('Running?');
+			run();
+		});
 	},
 	initialSelect: function() {
 		var that = this;
@@ -199,7 +226,6 @@ var assess = {
 			$('.technicalScore').html(technical_total);
 
 			$('.totalScore').html(content_total + language_total + technical_total);
-
 		}
 	},
 	initalHeader: function() {
@@ -215,17 +241,33 @@ var assess = {
 		});
 	},
 	initialSave: function() {
-		var that = this;
 		this.saveBtn.click(function() {
-			if ( that.checkHeader() ) {
-				var ret = that.checkOption();
-                if (ret) {
-                    console.log(JSON.stringify(that.data));
-                    console.log(JSON.stringify(that.header));
-					eel.generdate_word(JSON.stringify(that.data), JSON.stringify(that.header));
-				}
+			// Checks if user has set a file path (from the course settings)
+
+			// console.log('Path File Set? ', localStorage.getItem('filePathSet'));
+
+			// FIX: Find a way to check if the path has been set without using localStorage
+
+			if(!localStorage.getItem('isPathSet')){
+				console.log('Show Popup?');
+				$('#popupChooseFilePath').modal('show');
+			} else {
+				// Path has been set. Continue to save.
+				assess.generateWordDocument();
 			}
 		});
+	},
+	generateWordDocument: function() {
+		var that = this; 
+
+		if ( that.checkHeader() ) {
+			var ret = that.checkOption();
+			if (ret) {
+				console.log(JSON.stringify(that.data));
+				console.log(JSON.stringify(that.header));
+				eel.generdate_word(JSON.stringify(that.data), JSON.stringify(that.header));
+			}
+		}
 	},
 	initialReset: function() {
 		this.resetBtn.click(function() {
@@ -267,6 +309,14 @@ var assess = {
 		} else {
 			this.topic.removeClass("is-invalid");
 			this.header.topic = this.topic.text();
+		}
+		var totalScore = this.totalScore.html();
+
+		if(totalScore == 0){
+			this.header.score_percentage = 0;	
+		} else {		
+			var scorePercentage = totalScore / 48 * 100;
+			this.header.score_percentage = scorePercentage.toFixed(2);
 		}
 		return true;
 	},
@@ -333,7 +383,6 @@ function showSurvey() {
 	var hasSurvey = Cookies.get("survey");
 	console.log(hasSurvey);
 	//if ( !hasSurvey ) {
-		console.log("12345");
 		$("#surveyModel").modal('show');
 	//}
 }
