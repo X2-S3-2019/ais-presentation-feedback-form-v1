@@ -139,7 +139,7 @@ var assess = {
 	student_name: $("#student_name"),
 	student_id: $("#student_id"),
     topic: $("#presentations-assess"),
-	saveBtn: $("#save"),
+    saveBtn: $(".btnSaveAssessment"),
 	resetBtn: $("#reset"),
 	totalScore: $('.totalScore'),
 	setfolderBtn: $("#setfolder"),
@@ -340,7 +340,8 @@ var assess = {
 	},
 }
 
-$(document).ready(function(){
+$(document).ready(function () {
+    
 	var rating = 5;
 	assess.init();
     //start.init();

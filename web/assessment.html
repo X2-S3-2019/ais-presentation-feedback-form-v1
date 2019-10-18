@@ -34,12 +34,13 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input type="number" class="form-control" placeholder="Student ID" id="student_id" />
+                    <input type="text" class="form-control" placeholder="Student ID (10 chars max)" id="student_id" maxlength="10" />
+                    
                     <br />
                     <!-- <p class="text-center"><button class="btn mt-4 btn-primary disabled" id="get_student_name">Get
                             student name</button></p> -->
-                    <input type="text" class="form-control" placeholder="Student Full Name"
-                        id="student_name" />
+                    <input type="text" class="form-control" placeholder="Student Full Name (50 chars max)"
+                        id="student_name" maxlength="50" />
                     <br />
                     <span>Course:</span>
                     <select id="courses-assess" class="form-control"></select>
@@ -476,14 +477,14 @@
         </table>
 
         <div class="row">
-            <div class="col-4"></div>
+            <div class="col-3"></div>
             <div class="col-4">
             </div>
             <div class="col-2">
                 <button type="button" style="width: 100%" class="btn btn-primary" data-toggle="modal" data-target="#popupConfirmReset">Reset</button>
             </div>
-            <div class="col-2">
-                <button type="button" style="width: 100%" class="btnSaveAssessment btn btn-success">Calculate</button>
+            <div class="col-3">
+                <button type="button" style="width: 100%" class="btnSaveAssessment btn btn-success">Save Document</button>
             </div>
         </div>
 

@@ -23,12 +23,14 @@ var settings = {
     },
     initTabs() {
         this.coursesTab.on('click', function () {
-            settings.container.load("coursestab.html");
-        });
+            settings.container.load("coursestab.html")
+            setTimeout(function () { settings.getCourses(); }, 500);
+            });
         this.presentationsTab.on('click', function () {
 
             settings.container.load("presentationstab.html", function () {
                 settings.initPresentationTab();
+                setTimeout(function () { settings.getPresentations(); }, 500);
             });
         });
         // this.studentsTab.on('click', function () {
@@ -171,6 +173,12 @@ var settings = {
     initAddCourseBtn: function () {
         $(document).on('click', '#add-course', function () {
             settings.createCourse();
+
+            var showedPresentationsPopup = Cookies.get("presentations_popup");
+            if (!showedPresentationsPopup) {
+                $("#presentationInstructions").modal('show');
+                Cookies.set("presentations_popup");
+           }
         });
     },
 };
