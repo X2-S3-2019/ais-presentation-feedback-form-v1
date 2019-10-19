@@ -4,6 +4,8 @@ $(document).ready(function(){
         eel.say_hello_py('hello python!');
     });
 
+    
+
     /* Prevent right click 
     $(document).on("contextmenu", function () {
         return false;
@@ -11,7 +13,26 @@ $(document).ready(function(){
 
     /* SETTINGS */
     // TODO: Optimize this
+    // First-timers settings
+
+
     var checkboxAlwaysSetPath = $('#checkboxAlwaysSetPath');
+    var checkmark = $('.checkmark');
+
+    console.log('global.js: ' + checkboxAlwaysSetPath);
+
+    // Set the state of checkboxes according to localStorage settings
+    // TODO: For future implementations
+    
+    // if(localStorage.getItem('always set path') === null){
+    //     console.log('Settings updated to not checked');
+    //     checkboxAlwaysSetPath.prop('checked', false);
+    //     checkmark.toggleClass('');
+    // } else {
+    //     console.log('Settings updated to checked');
+    //     checkboxAlwaysSetPath.prop('checked', true);
+    //     checkmark.toggleClass(':after');
+    // }
 
     checkboxAlwaysSetPath.click(function(){
         console.log('clicked checkbox');

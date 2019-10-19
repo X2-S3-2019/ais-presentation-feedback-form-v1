@@ -254,11 +254,11 @@ var assess = {
 	},
 	initialSave: function() {
 		this.saveBtn.click(function() {
-			if(!localStorage.getItem('always set path')){
+			if(localStorage.getItem('always set path') === null){
+				assess.generateWordDocument();
+			} else {
 				console.log('Show Popup?');
 				$('#popupChooseFilePath').modal('show');
-			} else {
-				assess.generateWordDocument();
 			}
 		});
 	},

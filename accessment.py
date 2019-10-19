@@ -13,7 +13,6 @@ from email.mime.text import MIMEText
 from email.header import Header
 
 
-
 def resource_path(relative_path):
     """ Get absolute path to resource, works for dev and for PyInstaller """
     base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
@@ -21,11 +20,16 @@ def resource_path(relative_path):
 
 template = resource_path("./template/Template.docx")
 db_name = os.path.expanduser('~') + "/.ais.db"
-file_path = os.getcwd()
 
 eel.init('web')
 datastore.initDb(db_name);
 
+file_path = datastore.getParam('save_path')
+print(file_path)
+if file_path:
+    file_path = file_path[0][0]
+else:
+    file_path = os.getcwd()
 
 mail_host = 'smtp.gmail.com'  
 mail_user = 'wangdw2012'  
@@ -86,6 +90,10 @@ def getPresentations(course_id):
 @eel.expose
 def setFolder():
 	global file_path
+	path = os.getcwd()
+	print(file_path)
+	if file_path and os.path.exists(file_path):
+		path = file_path     
 	application_window = tk.Tk()
 	try:
 		application_window.withdraw()
@@ -93,13 +101,14 @@ def setFolder():
 		application_window.update()
 		file_path = filedialog.askdirectory(
 						parent=application_window,
-						initialdir=os.getcwd(),
+						initialdir=path,
 						title="Please select a folder:")
 		application_window.quit()
 		print(file_path)
 	except Exception as e:
 		print(e)
 		return False
+	datastore.saveParam('save_path', file_path)
 	return True
 
 @eel.expose
@@ -213,7 +222,7 @@ def generdate_word(options, header):
 		document.write(filename)
 		pass
 	except Exception as e:
-		eel.AisAlert("error occures!" + e)
+		eel.AisAlert(e)
 		pass
 	# eel.showSurvey()
 	eel.showSuccessfulSave(filename)

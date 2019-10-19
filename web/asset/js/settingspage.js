@@ -157,6 +157,7 @@ var settings = {
 		var that = this;
 		async function run() {
             const res = await eel.setFolder();
+            console.log("path is" + res);
             //if ( res ) {
             //	that.startBtn.removeClass("disabled");
             //}
