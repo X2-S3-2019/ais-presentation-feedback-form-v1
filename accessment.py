@@ -253,7 +253,7 @@ def openURL():
 @eel.expose
 def say_hello_py(x):
    print('Hello from %s' % x)
-   time.sleep(0.5)
+   time.sleep(0.9)
 
    
 say_hello_py('Python World!');
