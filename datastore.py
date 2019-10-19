@@ -20,6 +20,8 @@ def initDb(db_name):
     crs.execute('create table if not exists students (id integer primary key autoincrement, student_id, student_fname, student_sname)')
     crs.execute('create table if not exists course_students (id integer primary key autoincrement, student_id, course_id)')
     crs.execute('create table if not exists marks (id integer primary key autoincrement, student_id, course_id, presentation_id, content_focus, content_organization, content_visual, content_qa, lang_eye, lang_enth, lang_eloc, tech_knowl, tech_research, tech_discus, tech_atgument, tech_quest)')
+    crs.execute('create table if not exists settings (id integer primary key autoincrement, param, value)')
+    
     return True
 
 def getCourses():
@@ -72,3 +74,33 @@ def getPresentations(course_id):
     presentations = crs.fetchall()
 
     return presentations
+def saveParam(param_name, param_value):
+    try:
+        con = sqlite3.connect(db)
+    except Error:
+        print(Error)
+        con.close()
+
+    crs = con.cursor()    
+    if getParam(param_name):
+        crs.execute('update settings set value=:param_value where param=:param_name', {'param_name':param_name, 'param_value':param_value})
+    else:
+        crs.execute('replace into settings values (?, ?, ?)', (None, param_name, param_value))
+    con.commit()
+    con.close();
+    return True
+
+def getParam(param_name):
+    try:
+        con = sqlite3.connect(db)
+    except Error:
+        print(Error)
+        con.close()
+
+    crs = con.cursor()    
+    crs.execute('select value from settings where param=:param_name', {'param_name':param_name})
+    values = crs.fetchall()
+
+    con.commit()
+    con.close();
+    return values

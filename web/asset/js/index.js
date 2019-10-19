@@ -151,24 +151,7 @@ var assess = {
 		this.initalHeader();
         this.initialSave();
 		this.initialReset();
-		this.initSetFolder();
         mainpage.initCourses();
-	},
-	initSetFolder: function() {
-		var that = this;
-		async function run() {
-			const res = await eel.setFolder();
-			
-            if ( res ) {
-				$('#popupChooseFilePath').modal('toggle');
-				localStorage.setItem('isPathSet', true);
-				assess.generateWordDocument();
-            }
-        }
-		this.setfolderBtn.click(function() {
-			console.log('Running?');
-			run();
-		});
 	},
 	initialSelect: function() {
 		var that = this;
@@ -241,20 +224,17 @@ var assess = {
 		});
 	},
 	initialSave: function() {
-		this.saveBtn.click(function() {
-			// Checks if user has set a file path (from the course settings)
+        this.saveBtn.click(function () {
 
-			// console.log('Path File Set? ', localStorage.getItem('filePathSet'));
+            var that = this;
+            async function run() {
+                const res = await eel.setFolder();
 
-			// FIX: Find a way to check if the path has been set without using localStorage
-
-			if(!localStorage.getItem('isPathSet')){
-				console.log('Show Popup?');
-				$('#popupChooseFilePath').modal('show');
-			} else {
-				// Path has been set. Continue to save.
-				assess.generateWordDocument();
-			}
+                if (res) {
+                    assess.generateWordDocument();
+                }
+            }
+            run();
 		});
 	},
 	generateWordDocument: function() {
