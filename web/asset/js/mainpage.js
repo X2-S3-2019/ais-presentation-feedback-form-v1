@@ -34,7 +34,7 @@ var start = {
     initSettingsBtn: function () {
         var that = this;
         this.settingsBtn.on('click', function () {
-            window.location.href = "coursesettings.html"
+            window.location.href = "setup.html"
         });
     }
 };

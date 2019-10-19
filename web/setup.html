@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html class="h-100">
+
+<head>
+    <title>AIS Presentation Marking Tool</title>
+    <link rel="stylesheet" href="asset/index.css">
+    <link rel="stylesheet" href="asset/css/main.css">
+    <link rel="stylesheet" href="asset/css/lib/bootstrap4_3_1.min.css">
+    <link rel="stylesheet" href="asset/css/all.css">
+    <link rel="stylesheet" href="asset/css/foundation-icon-fonts.css">
+    <script src="asset/js/lib/jquery-3.4.1.min.js"></script>
+    <script src="asset/js/lib/popper.min.js" "></script>
+    <script src=" asset/js/lib/bootstrap.min.js"> </script> 
+    <script type="text/javascript" src="/eel.js"></script>
+</head>
+
+<body style="overflow: hidden; background: #fc354c;">
+    <!-- NAVIGATION (BREADCRUMBS) -->
+    <div>
+        <img class="small-logo" src="asset/imgs/ais-logo-vector.png" />
+        <nav class="breadcrumbs">
+            <a href="main.html" class=" fas fa-home"></a> 
+            <span class="fa fa-angle-right"></span>
+            <a href="#" class="current-item">Setup</a>
+        </nav>        
+    </div>
+    <!-- END OF NAVIGATION (BREADCRUMBS) -->
+
+    <div class="empty-space"></div>
+    <h3 class="text-center">What do you want to manage?</h3>
+    <div class="container padded">
+        <div class="row">
+            <div class="col-md-4 menu-item big-icon text-center">
+                <span class="big-circle-bg">
+                    <a class='menu-icon fas fa-graduation-cap' href='setup/courses.html'></a>
+                    <label>Courses</label>
+                </span>
+            </div>
+
+            <div class="col-md-4 menu-item big-icon text-center">
+                <span class="big-circle-bg">
+                    <a class='menu-icon fas fa-chalkboard-teacher' href='setup/presentations.html'></a>
+                    <label>Presentations</label>
+                </span>
+            </div>
+
+             <div class="col-md-4 menu-item big-icon text-center">
+                <span class="big-circle-bg">
+                    <a class='menu-icon fas fa-cog setup-btn' href='setup/settings.html' id="btnSetup"></a>
+                </span>
+                <label>Settings</label>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./asset/js/global.js"></script>
+</html>

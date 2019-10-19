@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="asset/css/main.css">
     <link rel="stylesheet" href="asset/css/lib/bootstrap4_3_1.min.css">
     <link rel="stylesheet" href="asset/css/all.css">
+    <link rel="stylesheet" href="asset/css/foundation-icon-fonts.css">
     <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet"> -->
     <script src="asset/js/lib/jquery-3.4.1.min.js"></script>
     <script src="asset/js/lib/popper.min.js" "></script>
@@ -37,48 +38,39 @@
             </div>
             <div class="col-md-4 menu-item big-icon text-center">
                 <span class="big-circle-bg">
-                    <a class='menu-icon fas fa-chalkboard-teacher' id="btnAssessment" href='#'></a>
-                    <label>Assessment</label>
+                    <a class='menu-icon fi fi-clipboard-pencil evaluate-btn' id="btnAssessment" href='#' onmouseover="showHint()" onmouseout="hideHint()"></a>
+                    <label>Evaluate</label>
+                    <p class="evaluate-hint hint">Give assessment to student presentation using evaluation form</p>
                 </span>
             </div>
 
             <div class="col-md-4 menu-item big-icon text-center">
                 <span class="big-circle-bg">
-                    <a class='menu-icon fas fa-users-cog' href='#' id="btnSetup" target="_blank"></a>
-                    <label>Setup Presentation</label>
+                    <a class='menu-icon fas fa-cogs setup-btn' href='#' id="btnSetup" onmouseover="showHint()" onmouseout="hideHint()"></a>
+                    <label>Setup</label>
+                    <p class="setup-hint hint">Manage courses, presentations and settings of the application</p>
                 </span>
             </div>
             <div class="col-md-2">
             </div>
         </div>
     </div>
-
-    <!-- <nav class='menu center-circular-menu'>
-        <input class='menu-toggler' id='menu-toggler' type='checkbox'>
-        <label for='menu-toggler'></label>
-        <ul>
-            <li class='menu-item'>
-                <a class='fa fa-question-circle' href='splash.html' title="How to Use"></a>
-            </li>
-            <li class='menu-item'>
-                <a class='fas fa-chalkboard-teacher' id="start" href='#' title="Assessment" target='_blank'></a>
-            </li>
-            <li class='menu-item'>
-                <a class='fas fa-users-cog' href='#' id="settings" title="Setup Presentation" target='_blank'></a>
-            </li> -->
-            <!-- <li class='menu-item'>
-                <a class='fas fa-id-badge' href='#' title="Profile" target='_blank'></a>
-            </li>
-            <li class='menu-item'>
-                <a class='fas fa-file-signature' href='#' title="Give Feedback" target='_blank'></a>
-            </li> -->
-            <!-- <li class='menu-item'>
-                <a class='fa fa-info' href='https://sites.google.com/view/evaluate-app' title="About" target='_blank' ></a>
-            </li>
-        </ul>
-    </nav> -->
-    <!-- <div class="app-subtitle"><p>"Assessment should be worthwhile, not tedious."</p></div> -->
 </body>
+<script>
+    function showHint(){
+        console.log('Hovered');
+        if($('.evaluate-btn').is(':hover')){
+            $('.evaluate-hint').addClass('show-hint');
+        } else if($('.setup-btn').is(':hover')){
+            $('.setup-hint').addClass('show-hint');
+        }
+    }
+    
+    function hideHint(){
+
+        $('.hint').removeClass('show-hint');
+    }
+</script>
 <script src="./asset/js/mainpage.js?v=1.11"></script>
 <script src="./asset/js/global.js?v=1.11"></script>
 </html>
