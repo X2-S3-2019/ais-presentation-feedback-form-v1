@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AIS Presentation Marking Tool</title>
+    <link rel="stylesheet" href="../asset/css/white-main.css">
+    <link rel="stylesheet" href="../asset/css/all.css">
+    <link rel="stylesheet" href="../asset/css/lib/bootstrap4_3_1.min.css">
+    <script src="../asset/js/lib/jquery-3.4.1.min.js"></script>
+    <script src="../asset/js/lib/js.cookie.min.js"></script>
+    <script src="../asset/js/lib/popper.min.js"></script>
+    <script src="../asset/js/lib/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/eel.js"></script>
+</head>
+    <body>
+        <div>
+            <nav class="breadcrumbs">
+                <a href="../main.html" class="fas fa-home"></a> 
+                <span class="fa fa-angle-right"></span>
+                <a href="../setup.html" class="nav-link-text">Setup</a>
+                <span class="fa fa-angle-right"></span>
+                <p class="current-item">Settings</p>
+            </nav>        
+        </div>
+        <div class="medium-padded">
+            <p>Set the default directory where the generated documents will be saved</p>
+            <button id="set_path" class="btn btn-primary">Set files path</button>
+            <br />
+            <br />
+            <label class="custom-checkbox">
+                <input type="checkbox" id="checkboxAlwaysSetPath" name="always-set-path" checked="checked">
+                <span class="checkmark"></span>
+                <span class="checkbox-label">Always ask to set directory after every presentation</span>
+            </label>
+            <br />
+            <!-- <label class="custom-checkbox">
+                <input type="checkbox" id="showCalculationPopUp">
+                <span class="checkmark"></span>
+                <span class="checkbox-label">Show calculation before saving assessment</span>
+            </label>
+            <br /> -->
+            <!-- <label class="custom-checkbox">
+                <input type="checkbox" id="showHint">
+                <span class="checkmark"></span>
+                <span class="checkbox-label">Turn on navigation hints</span>
+            </label>
+            <br /> -->
+            <label class="custom-checkbox">
+                <input type="checkbox" disabled>
+                <span class="checkmark"></span>
+                <span class="checkbox-label grey-text">Always open document after assessment (Premium)</span>
+            </label>
+            
+        </div>
+    </body>
+    <script src="../asset/js/global.js"></script>
+    <script src="../asset/js/settingspage.js?v=1.10"></script>
+</html>

@@ -29,12 +29,9 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalTitle">Assessment Information</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
                 </div>
                 <div class="modal-body">
-                    <input type="text" class="form-control" placeholder="Student ID (10 chars max)" id="student_id" maxlength="10" />
+                    <input type="text" pattern="\d*" class="form-control" placeholder="Student ID (10 chars max)" id="student_id" maxlength="10" />
                     
                     <br />
                     <!-- <p class="text-center"><button class="btn mt-4 btn-primary disabled" id="get_student_name">Get
@@ -49,7 +46,7 @@
                     <select id="presentations-assess" class="form-control"></select>                    
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" onclick="location.href='main.html'"">Close</button>
                     <button type="button" class="btn btn-primary" id="btnAssess">Save changes</button>
                 </div>
             </div>
@@ -133,8 +130,8 @@
                     <p class="successSavePopupBody"></p>
                     </div>
                     <div class="modal-footer">
-                        <button id="btnShowSurvey" class="btn btn-primary" data-dismiss="modal">Close</button>
-                        <a href="#" class="btn btn-success" onclick="window.location.reload();">Next Student</a>
+                        <button id="btnShowSurvey" class="btn btn-danger" data-dismiss="modal">Exit</button>
+                        <a href="#" class="btn btn-secondary" onclick="window.location.reload();">Next Student</a>
                     </div>
                 </div>
             </div>
@@ -195,7 +192,7 @@
                       </div>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Later</button>
+                      <button type="button" class="btn btn-secondary" onclick="location.href='main.html'">Later</button>
                       <button type="button" class="btn btn-primary" onclick="window.open('https://sites.google.com/view/evaluate-app/feedback-forms')">Give Feedback</button>
                     </div>
                   </div>
@@ -211,12 +208,13 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modalTitle">Choose a File Path</h5>
+                        <h5 class="modal-title" id="modalTitle">Saving assessment</h5>
                     </div>
                     <div class="modal-body">
-                        You haven't set where your generated documents will be saved.
+                    <p>You are about to save your assessment. Where do you want to save it?</p>
                     </div>
                     <div class="modal-footer">
+                        <button id="useDefaultFolder" class="btn btn-secondary" data-dismiss="modal">Use Default Directory</button>
                         <button id="setfolder" class="btn btn-primary">Set Path</button>
                     </div>
                 </div>
@@ -493,11 +491,12 @@
     </div> <!-- End of Main Container -->
 
     <div class="sticky-navigation">
-        <span class="spaced-span grey-bg">Presentation Time: <span id="presentation_timer_container" class="lblPresentationTime"></span></span>
-        <span class="spaced-span light-grey-bg">Content/Structure Idea: <span class="contentScore">0</span>/16</span>
-        <span class="spaced-span grey-bg">Language and Delivery: <span class="languageScore">0</span>/12</span>
-        <span class="spaced-span light-grey-bg">Technical: <span class="technicalScore">0</span>/20</span>
-        <span class="spaced-span grey-bg">Total: <span class="totalScore">0</span>/48</span>
+        <span class="spaced-span grey-bg">Presentation Time: <span id="presentation_timer_container" class="lblPresentationTime">00:00:00</span></span>
+        <br />
+        <span class="spaced-span">Content/Structure Idea: <span class="contentScore">0</span>/16</span> | 
+        <span class="spaced-span">Language and Delivery: <span class="languageScore">0</span>/12</span> | 
+        <span class="spaced-span">Technical: <span class="technicalScore">0</span>/20</span> |
+        <span class="spaced-span">Total: <span class="totalScore">0</span>/48 (<span class="scorePercentage">0</span>%)</span>
     </div>
 
     <!-- Circular Menu -->

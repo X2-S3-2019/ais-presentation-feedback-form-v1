@@ -143,6 +143,7 @@ var assess = {
 	resetBtn: $("#reset"),
 	totalScore: $('.totalScore'),
 	setfolderBtn: $("#setfolder"),
+	useDefaultFolder: $("#useDefaultFolder"),
 	isFilePathSet: false,
 
 	// generateBtn: $("#generate"),
@@ -152,7 +153,14 @@ var assess = {
         this.initialSave();
 		this.initialReset();
 		this.initSetFolder();
+		this.initUseDefaultFolder();
         mainpage.initCourses();
+	},
+	initUseDefaultFolder: function(){
+		this.useDefaultFolder.click(function(){
+			console.log("Use default directory");
+			assess.generateWordDocument();
+		});
 	},
 	initSetFolder: function() {
 		var that = this;
@@ -161,7 +169,6 @@ var assess = {
 			
             if ( res ) {
 				$('#popupChooseFilePath').modal('toggle');
-				localStorage.setItem('isPathSet', true);
 				assess.generateWordDocument();
             }
         }
@@ -198,6 +205,7 @@ var assess = {
 
 		function updateScores(data, criteria){
 			// Brute Force D<
+			var total_score, score_percentage;
 			var content_total = 0;
 
 			content_total += parseInt(data['content']['focus']);
@@ -225,7 +233,11 @@ var assess = {
 
 			$('.technicalScore').html(technical_total);
 
-			$('.totalScore').html(content_total + language_total + technical_total);
+			total_score = content_total + language_total + technical_total;
+			score_percentage = total_score / 48 * 100;
+
+			$('.totalScore').html(total_score);
+			$('.scorePercentage').html(score_percentage.toFixed(2));
 		}
 	},
 	initalHeader: function() {
@@ -242,17 +254,10 @@ var assess = {
 	},
 	initialSave: function() {
 		this.saveBtn.click(function() {
-			// Checks if user has set a file path (from the course settings)
-
-			// console.log('Path File Set? ', localStorage.getItem('filePathSet'));
-
-			// FIX: Find a way to check if the path has been set without using localStorage
-
-			if(!localStorage.getItem('isPathSet')){
+			if(!localStorage.getItem('always set path')){
 				console.log('Show Popup?');
 				$('#popupChooseFilePath').modal('show');
 			} else {
-				// Path has been set. Continue to save.
 				assess.generateWordDocument();
 			}
 		});

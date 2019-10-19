@@ -39,7 +39,7 @@ body {
 
   .main-container {
     background: white;
-    margin: 1em;
+    margin: 0 1em 4em;
     padding: 1em;
     border: 1px solid grey;
   }
@@ -51,6 +51,7 @@ body {
 .spaced-span {
   padding-left: .5em;
   padding-right: .5em;
+  font-size: 1.2em;
 }
 
 .grey-bg {
@@ -141,10 +142,63 @@ body {
   }
 
   .menu-item label {
+    display: block;
     padding-top: 1em;
     color: white;
     font-size: 1.3em;
   }
+
+  .menu-item p {
+    padding-top: 1em;
+    color: white;
+    opacity: 0;
+
+    -webkit-transition: opacity 0.5s ease-in;
+       -moz-transition: opacity 0.5s ease-in;
+        -ms-transition: opacity 0.5s ease-in;
+         -o-transition: opacity 0.5s ease-in;
+            transition: opacity 0.5s ease-in;
+  }
+
+  .menu-item .show-hint {
+    opacity: 1;
+    
+  }
+
+  .breadcrumbs {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 1em;
+  }
+
+  .breadcrumbs span {
+    color: black;
+    padding: 0 .5em;
+  }
+
+  .breadcrumbs .current-item {
+    display: inline;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+    font-weight: bolder;
+  }
+
+  .breadcrumbs a {
+    color: black;
+    font-size: 2em;
+    text-decoration-color: none;
+  }
+
+  .breadcrumbs a:hover {
+    color: white;
+    text-decoration: none;
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        transform: scale(1.1);
+        transition: 0.3s;
+  }
+ 
 
   /* .menu-item:hover label {
     display: inline-block;

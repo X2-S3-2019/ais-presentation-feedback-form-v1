@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AIS Presentation Marking Tool</title>
+    <link rel="stylesheet" href="../asset/css/white-main.css">
+    <link rel="stylesheet" href="../asset/css/all.css">
+    <link rel="stylesheet" href="../asset/css/lib/bootstrap4_3_1.min.css">
+    <script src="../asset/js/lib/jquery-3.4.1.min.js"></script>
+    <script src="../asset/js/lib/js.cookie.min.js"></script>
+    <script src="../asset/js/lib/popper.min.js"></script>
+    <script src="../asset/js/lib/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/eel.js"></script>
+</head>
+    <body>
+        <!-- NAVIGATION (BREADCRUMBS) -->
+        <div>
+            <nav class="breadcrumbs">
+                <a href="../main.html" class="fas fa-home"></a> 
+                <span class="fa fa-angle-right"></span>
+                <a href="../setup.html" class="nav-link-text">Setup</a>
+                <span class="fa fa-angle-right"></span>
+                <p class="current-item">Presentations</p>
+            </nav>        
+        </div>
+        <!-- END OF NAVIGATION (BREADCRUMBS) -->
+
+        <div class="form-group small-padded">
+            <div class="row presentations">
+                <div class="col-12">
+                    <label for="courses">Course</label>
+                    <select id="courses" class="form-control"></select>
+                </div>
+                <div class="col-4 pt-4">
+                    <label for="course-name">Presentation Date</label>
+                    <input type="date" class="form-control" id="presentation-date" placeholder="Enter presentation date">
+                </div>
+                <div class="col-8 pt-4">
+                    <label for="course-name">Presentation name</label>
+                    <input type="text" class="form-control" id="presentation-name" placeholder="Enter presentation name">
+                </div>
+            </div>
+            <button class="action-btn blue" id="add-presentation">Add Presentation</button>
+            <h2 class="mt-5">Course presentations</h2>
+            <div class="overflow-auto container-courses">
+            <table class="table table-hover" id="course-presentations-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Presentation ID</th>
+                        <th scope="col">Presentation Date</th>
+                        <th scope="col">Presentation Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   
+                </tbody>
+            </table>
+             </div>
+        </div>
+
+        <!-- Successful creation of presentation popup -->
+
+        <div class="modal" tabindex="-1" role="dialog" id="assessmentInstructions">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">New Presentation Added</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12">
+                                You created a new presentation.<br />
+                                Would you like to start evaluating?
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">                       
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                        <button type="button" class="btn btn-primary" onclick="location.href='../assessment.html';">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- End of popup -->
+    </body>
+    <script src="../asset/js/global.js?v=1.11"></script>
+    <script src="../asset/js/settingspage.js?v=1.10"></script>
+</html>

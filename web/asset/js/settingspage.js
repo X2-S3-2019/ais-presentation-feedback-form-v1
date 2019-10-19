@@ -12,7 +12,7 @@ var settings = {
         this.initAddCourseBtn();
         this.initSetFolder();
         this.initStartBtn();
-
+        this.initPresentationTab();
     },
 
     initLoadCourses() {
@@ -85,12 +85,15 @@ var settings = {
             }
             if (!valid) {
                 return false;
+            } else {
+                $("#assessmentInstructions").modal('show');
+                eel.createPresentation(course_id, presentation_date, presentation_name)
+                settings.getPresentations($('.presentations #courses').val());
+                $('#presentation-date').val('')
+                $('#presentation-name').val('')
             }
 
-            eel.createPresentation(course_id, presentation_date, presentation_name)
-            settings.getPresentations($('.presentations #courses').val());
-            $('#presentation-date').val('')
-            $('#presentation-name').val('')
+            
         }); 
     },
     createCourse() {
@@ -112,10 +115,11 @@ var settings = {
         }
         if (!valid) {
             return false;
-        }
-
-        eel.createCourse(course_name, course_id)
-        this.getCourses();
+        } else {
+            eel.createCourse(course_name, course_id)
+            this.getCourses();
+            $("#presentationInstructions").modal('show');
+        }        
     },
     getCourses() {
         $('#courses-table tbody').empty()
@@ -173,12 +177,6 @@ var settings = {
     initAddCourseBtn: function () {
         $(document).on('click', '#add-course', function () {
             settings.createCourse();
-
-            var showedPresentationsPopup = Cookies.get("presentations_popup");
-            if (!showedPresentationsPopup) {
-                $("#presentationInstructions").modal('show');
-                Cookies.set("presentations_popup");
-           }
         });
     },
 };

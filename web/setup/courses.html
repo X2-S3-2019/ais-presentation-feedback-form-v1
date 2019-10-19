@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AIS Presentation Marking Tool</title>
+    <link rel="stylesheet" href="../asset/css/white-main.css">
+    <link rel="stylesheet" href="../asset/css/all.css">
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="../asset/css/lib/bootstrap4_3_1.min.css">
+    <script src="../asset/js/lib/jquery-3.4.1.min.js"></script>
+    <script src="../asset/js/lib/js.cookie.min.js"></script>
+    <script src="../asset/js/lib/popper.min.js"></script>
+    <script src="../asset/js/lib/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/eel.js"></script>
+</head>
+    <body>
+        <div>
+            <nav class="breadcrumbs">
+                <a href="../main.html" class="fas fa-home"></a> 
+                <span class="fa fa-angle-right"></span>
+                <a href="../setup.html" class="nav-link-text">Setup</a>
+                <span class="fa fa-angle-right"></span>
+                <p class="current-item">Courses</p>
+            </nav>        
+        </div>
+        <div class="form-group small-padded">
+            <div class="row">
+                <div class="col-4">
+                    <label for="course-name">Course ID</label>
+                    <input type="text" class="form-control" id="course-id" aria-describedby="courseID" placeholder="Enter Course ID">
+                </div>
+                <div class="col-8">
+                    <label for="course-name">Course Title</label>
+                    <input type="text" class="form-control" id="course-name" aria-describedby="courseName" placeholder="Course Title">
+                </div>
+            </div>
+            <button class="action-btn blue" id="add-course">Add Course</button>
+            <h2 class="mt-5">Available courses</h2>
+            <div class="overflow-auto container-courses">
+                <table class="table table-hover" id="courses-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Course ID</th>
+                            <th scope="col">Course Name</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Successful creation of course popup -->
+
+        <div class="modal" tabindex="-1" role="dialog" id="presentationInstructions">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">New Course Created</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12">
+                                You have just created a new course. <br />
+                                Would you like to create a presentation for this course?
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">                       
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                        <button type="button" class="btn btn-primary" onclick="location.href='presentations.html';">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- End of popup -->
+    </body>
+    <script src="../asset/js/global.js?v=1.11"></script>
+    <script src="../asset/js/settingspage.js?v=1.10"></script>
+</html>
